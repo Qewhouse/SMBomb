@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "movieLogo.png",
       "idiom" : "universal"
     }
   ],
