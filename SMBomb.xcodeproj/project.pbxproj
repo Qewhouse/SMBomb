@@ -54,14 +54,54 @@
 		3743FA0B2A8019DB004688D7 /* SMBomb */ = {
 			isa = PBXGroup;
 			children = (
-				3743FA0C2A8019DB004688D7 /* AppDelegate.swift */,
-				3743FA0E2A8019DB004688D7 /* SceneDelegate.swift */,
-				3743FA102A8019DB004688D7 /* MainViewController.swift */,
-				3743FA152A8019DC004688D7 /* Assets.xcassets */,
-				3743FA172A8019DC004688D7 /* LaunchScreen.storyboard */,
-				3743FA1A2A8019DC004688D7 /* Info.plist */,
+				3743FA202A801E60004688D7 /* App */,
+				3743FA232A801E7C004688D7 /* Controllers */,
+				3743FA222A801E74004688D7 /* Views */,
+				3743FA212A801E6C004688D7 /* Model */,
+				3743FA242A801EAB004688D7 /* Resources */,
 			);
 			path = SMBomb;
+			sourceTree = "<group>";
+		};
+		3743FA202A801E60004688D7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3743FA0C2A8019DB004688D7 /* AppDelegate.swift */,
+				3743FA0E2A8019DB004688D7 /* SceneDelegate.swift */,
+				3743FA1A2A8019DC004688D7 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3743FA212A801E6C004688D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3743FA222A801E74004688D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3743FA172A8019DC004688D7 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3743FA232A801E7C004688D7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3743FA102A8019DB004688D7 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3743FA242A801EAB004688D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3743FA152A8019DC004688D7 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +317,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2JBA92AKK9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SMBomb/Info.plist;
+				INFOPLIST_FILE = SMBomb/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -307,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2JBA92AKK9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SMBomb/Info.plist;
+				INFOPLIST_FILE = SMBomb/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
