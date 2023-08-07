@@ -10,6 +10,7 @@ import UIKit
 enum Theme {
     //MARK: Colors
     static let accentColor: UIColor = UIColor(named: "AccentColor")!
+    static let orangeFont: UIColor = UIColor(named: "OrangeFont")!
     
     
     //MARK: Font
