@@ -1,30 +1,42 @@
 //
-//  StartScreenView.swift
+//  FinalScreen.swift
 //  SMBomb
 //
 //  Created by Maria on 08.08.2023.
 //
 
+
 import Foundation
 import UIKit
 import SnapKit
 
-class StartScreenviewController: UIViewController
+class FinalScreenViewController: UIViewController
 
 {
     lazy var firstLabel: UILabel = {
         let label = UILabel()
-        label.text = "Игра для компании"
-        label.font = UIFont(name: "DelaGothicOne-Regular", size: 32)
-        label.textColor = .black
+        label.text = "Игра"
+        label.font = UIFont(name: "DelaGothicOne-Regular", size: 40)
+        label.textColor = UIColor(named: "VioletFont")
         return label
     }()
     
     lazy var secondLabel: UILabel = {
         let label = UILabel()
-        label.text = "БОМБА"
-        label.font = UIFont(name: "DelaGothicOne-Regular", size: 60)
-        label.textColor = .purple
+        label.text = "Проигравший выполняет задание"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = UIFont(name: "DelaGothicOne-Regular", size: 28)
+        label.textColor = .black
+        return label
+    }()
+    lazy var ladoshiLabel: UILabel = {
+        let label = UILabel()
+        label.text = "В следующем раунде после каждого ответа хлопать в ладоши"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont(name: "DelaGothicOne-Regular", size: 24)
+        label.textColor = UIColor(named: "VioletFont")
         return label
     }()
     
@@ -36,36 +48,36 @@ class StartScreenviewController: UIViewController
     
     lazy var bombaImage: UIImageView = {
         let imagebackground = UIImageView()
-        imagebackground.image = UIImage(named: "bombLogo")
+        imagebackground.image = UIImage(named: "bombResults")
         return imagebackground
     }()
     
     lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Старт игры", for: .normal)
+        button.setTitle("Другое задание", for: .normal)
         button.setTitleColor(Theme.yellowFont, for: .normal)
         button.backgroundColor = Theme.violetBack
         button.titleLabel?.font = UIFont(name: "DelaGothicOne-Regular", size: 24)
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(startGameButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(anotherGameButtonTapped), for: .touchUpInside)
         return button
     }()
     
     lazy var categoryButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Категории", for: .normal)
+        button.setTitle("Играть заново", for: .normal)
         button.setTitleColor(Theme.yellowFont, for: .normal)
         button.backgroundColor = Theme.violetBack
         button.titleLabel?.font = UIFont(name: "DelaGothicOne-Regular", size: 24)
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    lazy var rulesButton: UIButton = {
+    lazy var pauseButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "rulesButton"), for: .normal)
-        button.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
+        button.setImage(UIImage(named: "pauseButton"), for: .normal)
+        button.addTarget(self, action: #selector(pauseButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -73,17 +85,18 @@ class StartScreenviewController: UIViewController
         super.viewDidLoad()
         setupView()
         makeConstraint()
-        startButton.addTarget(self, action: #selector(startGameButtonTapped), for: .touchUpInside)
     }
+    
     
     func setupView() {
         view.addSubview(backgroundImage)
+        backgroundImage.addSubview(pauseButton)
         backgroundImage.addSubview(firstLabel)
         backgroundImage.addSubview(secondLabel)
         backgroundImage.addSubview(bombaImage)
         backgroundImage.addSubview(startButton)
         backgroundImage.addSubview(categoryButton)
-        backgroundImage.addSubview(rulesButton)
+        backgroundImage.addSubview(ladoshiLabel)
     }
     
     
@@ -95,21 +108,27 @@ class StartScreenviewController: UIViewController
             make.trailing.equalToSuperview()
         }
         bombaImage.snp.makeConstraints { make in
-            make.top.equalTo(secondLabel.snp.bottom).offset(0)
+            make.top.equalTo(secondLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         
         secondLabel.snp.makeConstraints { make in
             make.top.equalTo(firstLabel.snp.bottom).offset(-10)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-15)
         }
         
         firstLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(85)
+            make.top.equalToSuperview().offset(50)
+            make.centerX.equalToSuperview()
+        }
+        ladoshiLabel.snp.makeConstraints { make in
+            make.top.equalTo (bombaImage.snp.bottom).offset(0)
+            make.trailing.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
         startButton.snp.makeConstraints { make in
-            make.top.equalTo (bombaImage.snp.bottom).offset(10)
+            make.top.equalTo (ladoshiLabel.snp.bottom).offset(10)
             make.height.equalTo(79)
             make.width.equalTo(274)
             make.centerX.equalToSuperview()
@@ -120,25 +139,25 @@ class StartScreenviewController: UIViewController
             make.width.equalTo(274)
             make.centerX.equalToSuperview()
         }
-        rulesButton.snp.makeConstraints { make in
-            make.top.equalTo (categoryButton.snp.bottom).offset(0)
+        pauseButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(62)
             make.width.equalTo(62)
         }
+        
     }
 }
 
-extension StartScreenviewController {
-    @objc func startGameButtonTapped() {
-        let finalVC = FinalScreenViewController()
-        finalVC.modalPresentationStyle = .fullScreen
-        present(finalVC, animated: true)
-    }
-    @objc func categoryButtonTapped(){
+extension FinalScreenViewController {
+    @objc func anotherGameButtonTapped() {
         
     }
-    @objc func rulesButtonTapped() {
+    @objc func newGameButtonTapped(){
+        
+    }
+    @objc func pauseButtonTapped() {
         
     }
 }
+
