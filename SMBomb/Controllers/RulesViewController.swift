@@ -51,6 +51,8 @@ class RulesViewController: UIViewController {
         return label
     }()
     
+    let ruleView1 = RulesView(textForRules: "Все игроки становятся в круг.", rulePoint: 1, buttonNameExample: nil)
+    
     
     
     override func viewDidLoad() {
@@ -86,9 +88,15 @@ class RulesViewController: UIViewController {
         scrollView.addSubview(rulesTitleLabel)
         scrollView.addSubview(rulesLabel)
         scrollView.addSubview(titleCategoriaLabel)
+        scrollView.addSubview(ruleView1)
+        
+        
         rulesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         rulesLabel.translatesAutoresizingMaskIntoConstraints = false
         titleCategoriaLabel.translatesAutoresizingMaskIntoConstraints = false
+        ruleView1.translatesAutoresizingMaskIntoConstraints = false
+        
+        
 
         rulesTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
         rulesTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
@@ -104,11 +112,20 @@ class RulesViewController: UIViewController {
         titleCategoriaLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         titleCategoriaLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
         titleCategoriaLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-        titleCategoriaLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20).isActive = true
+        
+        ruleView1.topAnchor.constraint(equalTo: titleCategoriaLabel.bottomAnchor, constant: 20).isActive = true
+        ruleView1.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        ruleView1.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
+        ruleView1.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
+        ruleView1.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20).isActive = true
+        
+        rulesTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+        
 
         rulesTitleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         rulesLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
         titleCategoriaLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
     }
     
     override func viewDidLayoutSubviews() {
