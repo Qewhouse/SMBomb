@@ -9,9 +9,7 @@
 import UIKit
 import SnapKit
 
-class FinalScreenViewController: UIViewController
-
-{
+class FinalScreenViewController: UIViewController {
     
     lazy var firstLabel: UILabel = {
         let label = UILabel()
@@ -66,14 +64,6 @@ class FinalScreenViewController: UIViewController
         return button
     }()
     
-    #warning ("Re-code for bar button item")
-    lazy var pauseButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "pauseButton"), for: .normal)
-        button.addTarget(self, action: #selector(pauseButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,14 +74,14 @@ class FinalScreenViewController: UIViewController
     func setupView() {
         title = "ИГРА"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
+        
         view.addSubview(backgroundImage)
-        backgroundImage.addSubview(pauseButton)
-//        backgroundImage.addSubview(firstLabel)
-        backgroundImage.addSubview(firstLabel)
-        backgroundImage.addSubview(bombaImage)
-        backgroundImage.addSubview(startButton)
-        backgroundImage.addSubview(categoryButton)
-        backgroundImage.addSubview(ladoshiLabel)
+        view.addSubview(firstLabel)
+        view.addSubview(bombaImage)
+        view.addSubview(startButton)
+        view.addSubview(categoryButton)
+        view.addSubview(ladoshiLabel)
     }
     
     
@@ -130,13 +120,6 @@ class FinalScreenViewController: UIViewController
             make.width.equalTo(274)
             make.centerX.equalToSuperview()
         }
-        pauseButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(62)
-            make.width.equalTo(62)
-        }
-        
     }
 }
 
