@@ -73,7 +73,6 @@ class FinalScreenViewController: UIViewController {
     
     func setupView() {
         title = "ИГРА"
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
         
         view.addSubview(backgroundImage)

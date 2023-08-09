@@ -136,12 +136,14 @@ extension StartScreenviewController {
 extension StartScreenviewController {
     @objc func startGameButtonTapped() {
         print("tap-tap start")
-        let finalVC = FinalScreenViewController()
-        navigationController?.pushViewController(finalVC, animated: true)
+        let vc = GamePrepViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func categoryButtonTapped() {
         print("tap-tap category")
+        let vc = CategoryViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func rulesButtonTapped() {

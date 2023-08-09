@@ -57,7 +57,8 @@ class GamePrepViewController: UIViewController {
     
     //MARK: - Buttons Actions
     @objc func startButtonTapped() {
-        
+        let vc = GameViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func pauseButtonTapped() {
