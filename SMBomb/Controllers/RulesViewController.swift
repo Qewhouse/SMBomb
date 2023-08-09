@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class RulesViewController: UIViewController {
     
@@ -43,15 +44,16 @@ class RulesViewController: UIViewController {
         return label
     }()
     
-    let rulesLabel:UILabel = {
-        let label = UILabel()
-        label.text = "1.Все игроки становятся в круг.\n2.Первый игрок берет телефон и нажимает кнопку:\n3.На экране появляется вопрос “Назовите Фрукт”.\n4.Игрок отвечает на вопрос и после правильного ответа передает телефон следующему игроку (правильность ответа определяют другие участники).\n5.Игроки по кругу отвечают на один и тот же вопрос до тех пор, пока не взорвется бомба.\n6.Проигравшим считается тот, в чьих руках взорвалась бомба.\n7.Если в настройках выбран режим игры “С Заданиями”, то проигравший выполняет задание."
-        label.font = UIFont(name: Theme.appFont, size: 16)
+    
+    let ruleTextForPoint:UILabel = {
+       let label = UILabel()
+        label.text = "Все игроки становятся в круг."
+        label.font = UIFont(name: Theme.appFont, size: 20)
+        label.textColor = Theme.blackFont
         label.numberOfLines = 0
         return label
     }()
     
-    let ruleView1 = RulesView(textForRules: "Все игроки становятся в круг.", rulePoint: 1, buttonNameExample: nil)
     
     
     
@@ -66,16 +68,14 @@ class RulesViewController: UIViewController {
     }
     
     func makeConstraints() {
-        bacgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        bacgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        bacgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        bacgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bacgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    }
+            bacgroundImageView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            
+            scrollView.snp.makeConstraints { make in
+                make.edges.equalTo(view.safeAreaLayoutGuide)
+            }
+        }
     
     func setupView() {
         view.addSubview(bacgroundImageView)
@@ -84,53 +84,55 @@ class RulesViewController: UIViewController {
         setupScrollView()
     }
     
-    func setupScrollView() {
-        scrollView.addSubview(rulesTitleLabel)
-        scrollView.addSubview(rulesLabel)
-        scrollView.addSubview(titleCategoriaLabel)
-        scrollView.addSubview(ruleView1)
+    func setupTextRule(){
+        scrollView.addSubview(ruleTextForPoint)
+        let viewRound = viewForPoint(1)
+        scrollView.addSubview(viewRound)
         
-        
-        rulesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        rulesLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleCategoriaLabel.translatesAutoresizingMaskIntoConstraints = false
-        ruleView1.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-
-        rulesTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
-        rulesTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        rulesTitleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
-        rulesTitleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-
-        rulesLabel.topAnchor.constraint(equalTo: rulesTitleLabel.bottomAnchor, constant: 20).isActive = true
-        rulesLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        rulesLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
-        rulesLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-
-        titleCategoriaLabel.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 20).isActive = true
-        titleCategoriaLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        titleCategoriaLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
-        titleCategoriaLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-        
-        ruleView1.topAnchor.constraint(equalTo: titleCategoriaLabel.bottomAnchor, constant: 20).isActive = true
-        ruleView1.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        ruleView1.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
-        ruleView1.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-        ruleView1.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20).isActive = true
-        
-        rulesTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-        
-
-        rulesTitleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        rulesLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
-        titleCategoriaLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        ruleTextForPoint.snp.makeConstraints { make in
+            make.top.equalTo(rulesTitleLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalTo(scrollView).inset(40)
+        }
+        viewRound.snp.makeConstraints { make in
+            make.centerY.equalTo(ruleTextForPoint.snp.centerY)
+            make.trailing.equalTo(ruleTextForPoint.snp.leading).offset(-20)
+        }
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: rulesLabel.frame.maxY + 20)
+    func viewForPoint(_ naumber:Int) ->UIView{
+        let view = UIView()
+        view.backgroundColor = Theme.violetBack
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.cornerRadius = 29 / 2
+        view.snp.makeConstraints { make in
+            make.height.width.equalTo(29)
+        }
+        
+        let label = UILabel()
+        label.text = "\(naumber)"
+        label.font = UIFont(name: Theme.appFont, size: 16)
+        label.textColor = Theme.yellowFont
+        label.textAlignment = .center
+        view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.center.equalTo(view)
+        }
+        return view
     }
+    
+    func setupScrollView() {
+            scrollView.addSubview(rulesTitleLabel)
+            
+            rulesTitleLabel.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(20)
+                make.centerX.equalToSuperview()
+            }
+        
+        setupTextRule()
+            
+            scrollView.contentSize = CGSize(width: view.frame.width, height: ruleTextForPoint.frame.maxY + 20)
+        }
 }
 
