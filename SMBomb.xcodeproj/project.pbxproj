@@ -14,6 +14,8 @@
 		3743FA192A8019DC004688D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3743FA172A8019DC004688D7 /* LaunchScreen.storyboard */; };
 		3743FA262A801FAE004688D7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743FA252A801FAE004688D7 /* Theme.swift */; };
 		3743FA292A802606004688D7 /* DelaGothicOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3743FA282A802606004688D7 /* DelaGothicOne-Regular.ttf */; };
+		4CE098052A82C7C8000D17F6 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098042A82C7C8000D17F6 /* StartScreenView.swift */; };
+		4CE098082A82C841000D17F6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE098072A82C841000D17F6 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,7 @@
 		3743FA1A2A8019DC004688D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3743FA252A801FAE004688D7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3743FA282A802606004688D7 /* DelaGothicOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DelaGothicOne-Regular.ttf"; sourceTree = "<group>"; };
+		4CE098042A82C7C8000D17F6 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE098082A82C841000D17F6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3743FA102A8019DB004688D7 /* MainViewController.swift */,
+				4CE098042A82C7C8000D17F6 /* StartScreenView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -134,6 +139,9 @@
 			dependencies = (
 			);
 			name = SMBomb;
+			packageProductDependencies = (
+				4CE098072A82C841000D17F6 /* SnapKit */,
+			);
 			productName = SMBomb;
 			productReference = 3743FA092A8019DB004688D7 /* SMBomb.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +170,9 @@
 				Base,
 			);
 			mainGroup = 3743FA002A8019DB004688D7;
+			packageReferences = (
+				4CE098062A82C841000D17F6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 3743FA0A2A8019DB004688D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,6 +204,7 @@
 				3743FA262A801FAE004688D7 /* Theme.swift in Sources */,
 				3743FA0D2A8019DB004688D7 /* AppDelegate.swift in Sources */,
 				3743FA0F2A8019DB004688D7 /* SceneDelegate.swift in Sources */,
+				4CE098052A82C7C8000D17F6 /* StartScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4CE098062A82C841000D17F6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4CE098072A82C841000D17F6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CE098062A82C841000D17F6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3743FA012A8019DB004688D7 /* Project object */;
 }
