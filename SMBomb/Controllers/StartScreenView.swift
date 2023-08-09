@@ -5,26 +5,24 @@
 //  Created by Maria on 08.08.2023.
 //
 
-import Foundation
 import UIKit
 import SnapKit
 
-class StartScreenviewController: UIViewController
-
-{
+class StartScreenviewController: UIViewController {
+    //MARK: - UI Elements
     lazy var firstLabel: UILabel = {
         let label = UILabel()
         label.text = "Игра для компании"
-        label.font = UIFont(name: "DelaGothicOne-Regular", size: 32)
-        label.textColor = .black
+        label.font = UIFont(name: Theme.appFont, size: 32)
+        label.textColor = Theme.blackFont
         return label
     }()
     
     lazy var secondLabel: UILabel = {
         let label = UILabel()
         label.text = "БОМБА"
-        label.font = UIFont(name: "DelaGothicOne-Regular", size: 60)
-        label.textColor = .purple
+        label.font = UIFont(name: Theme.appFont, size: 60)
+        label.textColor = Theme.violetFont
         return label
     }()
     
@@ -45,7 +43,7 @@ class StartScreenviewController: UIViewController
         button.setTitle("Старт игры", for: .normal)
         button.setTitleColor(Theme.yellowFont, for: .normal)
         button.backgroundColor = Theme.violetBack
-        button.titleLabel?.font = UIFont(name: "DelaGothicOne-Regular", size: 24)
+        button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.layer.cornerRadius = 38
         button.addTarget(self, action: #selector(startGameButtonTapped), for: .touchUpInside)
         return button
@@ -56,7 +54,7 @@ class StartScreenviewController: UIViewController
         button.setTitle("Категории", for: .normal)
         button.setTitleColor(Theme.yellowFont, for: .normal)
         button.backgroundColor = Theme.violetBack
-        button.titleLabel?.font = UIFont(name: "DelaGothicOne-Regular", size: 24)
+        button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.layer.cornerRadius = 38
         button.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         return button
@@ -69,31 +67,36 @@ class StartScreenviewController: UIViewController
         return button
     }()
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupView()
         makeConstraint()
-        startButton.addTarget(self, action: #selector(startGameButtonTapped), for: .touchUpInside)
     }
     
-    func setupView() {
+    //MARK: - Methods
+    private func setupView() {
+        
         view.addSubview(backgroundImage)
-        backgroundImage.addSubview(firstLabel)
-        backgroundImage.addSubview(secondLabel)
-        backgroundImage.addSubview(bombaImage)
-        backgroundImage.addSubview(startButton)
-        backgroundImage.addSubview(categoryButton)
-        backgroundImage.addSubview(rulesButton)
+        view.addSubview(firstLabel)
+        view.addSubview(secondLabel)
+        view.addSubview(bombaImage)
+        view.addSubview(startButton)
+        view.addSubview(categoryButton)
+        view.addSubview(rulesButton)
     }
-    
-    
-    func makeConstraint(){
+}
+//MARK: - Constraints
+extension StartScreenviewController {
+    private func makeConstraint(){
         backgroundImage.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
+        
         bombaImage.snp.makeConstraints { make in
             make.top.equalTo(secondLabel.snp.bottom).offset(0)
             make.centerX.equalToSuperview()
@@ -129,16 +132,19 @@ class StartScreenviewController: UIViewController
     }
 }
 
+//MARK: - Button Actions
 extension StartScreenviewController {
     @objc func startGameButtonTapped() {
+        print("tap-tap start")
         let finalVC = FinalScreenViewController()
-        finalVC.modalPresentationStyle = .fullScreen
-        present(finalVC, animated: true)
+        navigationController?.pushViewController(finalVC, animated: true)
     }
-    @objc func categoryButtonTapped(){
-        
+    
+    @objc func categoryButtonTapped() {
+        print("tap-tap category")
     }
+    
     @objc func rulesButtonTapped() {
-        
+        print("tap-tap rules")
     }
 }
