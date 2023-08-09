@@ -17,7 +17,7 @@ class Screen3ViewController: UIViewController
         setConstrains()
         title = "Игра"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
-        navigationItem.leftBarButtonItem = navigationItem.backBarButtonItem
+        
       
     }
     
@@ -94,7 +94,6 @@ class Screen3ViewController: UIViewController
                 startButton.widthAnchor.constraint(equalToConstant: 274),
                 startButton.heightAnchor.constraint(equalToConstant: 79),
                 startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                //startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 64),
                 startButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
                 
                 
