@@ -8,6 +8,7 @@
 import Foundation
 
 struct Punishment {
+    
     let punishment = [
         "Залезь под стол и прохрюкай три раза",
         "Отожмись 10 раз",
@@ -20,11 +21,9 @@ struct Punishment {
         "Рассказать вслух историю, состоящую из слов на букву Х (целиком)",
         "В течение 30 секунд вращать невидимый хула-хуп на талии"]
     
-    var punishmentNumber  = 0
+//    var punishmentNumber = 0
     
     func  getPunishment() -> String {
         return punishment.randomElement()!
-        
     }
 }
-
