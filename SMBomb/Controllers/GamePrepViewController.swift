@@ -9,6 +9,8 @@ import UIKit
 
 class GamePrepViewController: UIViewController {
     
+    var selectedCategory: Int?
+    
     //MARK: - UI Elements
     private lazy var backgroundImage: UIImageView = {
         let imagebackground = UIImageView()
@@ -59,12 +61,28 @@ class GamePrepViewController: UIViewController {
     @objc func startButtonTapped() {
         print("go to game screen")
         let vc = GameViewController()
+        let array = Tasks()
+        var questions  = array.taskSport
+        switch selectedCategory {
+        case  1:
+            questions = array.tasksGeography
+        case  2:
+            questions = array.taskSport
+        case  3:
+            questions = array.tasksAnimals
+        case  4:
+            questions = array.tasksArtFilms
+        case  5:
+            questions = array.tasksLiterature
+        case  6:
+            questions = array.tasksFood
+        default:
+            questions =  array.taskSport
+        }
+        vc.questionArray = array.getShuffleQuestions(taskArray: questions)
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func pauseButtonTapped() {
-        
-    }
 }
 
 extension GamePrepViewController {
@@ -72,8 +90,6 @@ extension GamePrepViewController {
     //MARK: - View Set up
     private func setUpView() {
         title = "Игра"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
-        
         view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
         view.addSubview(bombImage)

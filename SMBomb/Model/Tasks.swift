@@ -110,4 +110,10 @@ struct Tasks{
         "Назовите часть туши при разделке",
         "Назовите один из основных вкусов"]
     
-    }
+    func getShuffleQuestions(taskArray: [String]) -> [String]
+        {
+            return taskArray.shuffled()
+        }
+}
+    
+    
