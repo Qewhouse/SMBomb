@@ -64,20 +64,12 @@ class PauseScreen: UIViewController {
     
     //MARK: - Buttons Actions
     @objc func continueButtonTapped() {
-        self.dismiss(animated: true)
-       
-        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func returnToMainButtonTapped() {
-//        let vc = StartScreenviewController()
-//        navigationController?.pushViewController(vc, animated: true)
-////        present(vc, animated: true)
-//
-        self.dismiss(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
     
         //MARK: - View Set up
         private func setUpView() {

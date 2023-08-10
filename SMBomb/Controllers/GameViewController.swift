@@ -46,29 +46,22 @@ class GameViewController: UIViewController {
         return animation
     }()
     
-    
-    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         setConstrains()
-        
-        
     }
     
     //MARK: - Button Actions
     @objc func pauseButtonTapped() {
         let vc = PauseScreen()
-//        let navVC = UINavigationController(rootViewController: vc)
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
        
-        
         stopGame()
         func stopGame() {
             timer.invalidate()
         }}
-    
     
     //MARK: - View Setup
     func setUpView() {
@@ -88,15 +81,10 @@ class GameViewController: UIViewController {
         } else {
             titleLabel.text = tasks.tasksGeography[0]
         }
-//
         
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        
     }
-    
-    
     
     //MARK: - Constraints
     func setConstrains () {
@@ -115,7 +103,6 @@ class GameViewController: UIViewController {
             explosionAnimation.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             explosionAnimation.widthAnchor.constraint(equalToConstant: 450),
             explosionAnimation.heightAnchor.constraint(equalToConstant: 450),
-            
             
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),

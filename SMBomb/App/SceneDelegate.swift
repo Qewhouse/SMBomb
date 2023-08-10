@@ -14,8 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let viewController = StartScreenviewController()// изначальная настройка viewController
-        let viewController = GameViewController()
+        let viewController = StartScreenviewController()// изначальная настройка viewController
         /* Для того, чтобы автоматически отображать Ваш экран при запуске симулятора нужно:
             1. Скопировать строку №17 на строку №18
             2. В строке №18 поменять MainViewController на название Вашего ViewController
