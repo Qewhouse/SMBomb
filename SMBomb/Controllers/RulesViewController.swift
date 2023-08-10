@@ -215,15 +215,13 @@ class RulesViewController: UIViewController {
         
         ruleText1.snp.makeConstraints { make in
             make.top.equalTo(rulesTitleLabel.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
         
         ruleText2.snp.makeConstraints { make in
             make.top.equalTo(ruleText1.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
         
@@ -240,36 +238,31 @@ class RulesViewController: UIViewController {
         
         ruleText3.snp.makeConstraints { make in
             make.top.equalTo(buttonView.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
         
         ruleText4.snp.makeConstraints { make in
             make.top.equalTo(ruleText3.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(120)
         }
         
         ruleText5.snp.makeConstraints { make in
             make.top.equalTo(ruleText4.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(55)
         }
         
         ruleText6.snp.makeConstraints { make in
             make.top.equalTo(ruleText5.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
         
         ruleText7.snp.makeConstraints { make in
             make.top.equalTo(ruleText6.snp.bottom).offset(20)
-            make.leading.equalTo(scrollView.snp.leading).offset(10)
-            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.centerX.equalToSuperview()
             make.height.equalTo(90)
         }
         
