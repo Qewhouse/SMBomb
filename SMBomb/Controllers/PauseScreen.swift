@@ -55,16 +55,22 @@ class PauseScreen: UIViewController {
         return button
     }()
     
+    var pausedCounter = 0
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         setConstrains()
+
+    
+        print("Paused counter is \(pausedCounter)")
     }
     
     //MARK: - Buttons Actions
     @objc func continueButtonTapped() {
         navigationController?.popViewController(animated: true)
+
     }
     
     @objc func returnToMainButtonTapped() {
