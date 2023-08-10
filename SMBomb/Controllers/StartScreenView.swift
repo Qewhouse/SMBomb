@@ -148,5 +148,7 @@ extension StartScreenviewController {
     
     @objc func rulesButtonTapped() {
         print("tap-tap rules")
+        let vc = RulesViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

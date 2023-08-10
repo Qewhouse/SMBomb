@@ -59,6 +59,7 @@ class GamePrepViewController: UIViewController {
     
     //MARK: - Buttons Actions
     @objc func startButtonTapped() {
+        print("go to game screen")
         let vc = GameViewController()
         let array = Tasks()
         var questions  = array.taskSport
