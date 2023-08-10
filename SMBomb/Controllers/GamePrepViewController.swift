@@ -43,7 +43,7 @@ class GamePrepViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.backgroundColor = Theme.violetBack
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -57,6 +57,7 @@ class GamePrepViewController: UIViewController {
     
     //MARK: - Buttons Actions
     @objc func startButtonTapped() {
+        print("go to game screen")
         let vc = GameViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
