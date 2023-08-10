@@ -37,7 +37,7 @@ class PauseScreen: UIViewController {
         button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.backgroundColor = Theme.violetBack
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
@@ -50,7 +50,7 @@ class PauseScreen: UIViewController {
         button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.backgroundColor = Theme.violetBack
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(returnToMainButtonTapped), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(returnToMainButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -64,14 +64,17 @@ class PauseScreen: UIViewController {
     
     //MARK: - Buttons Actions
     @objc func continueButtonTapped() {
-        let vc = GameViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        self.dismiss(animated: true)
+       
         
     }
     
     @objc func returnToMainButtonTapped() {
-        let vc = StartScreenviewController()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = StartScreenviewController()
+//        navigationController?.pushViewController(vc, animated: true)
+////        present(vc, animated: true)
+//
+        self.dismiss(animated: true)
     }
     
     

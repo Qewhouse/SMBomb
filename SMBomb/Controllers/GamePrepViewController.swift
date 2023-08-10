@@ -9,6 +9,8 @@ import UIKit
 
 class GamePrepViewController: UIViewController {
     
+    var selectedCategory: Int?
+    
     //MARK: - UI Elements
     private lazy var backgroundImage: UIImageView = {
         let imagebackground = UIImageView()
@@ -43,7 +45,7 @@ class GamePrepViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: Theme.appFont, size: 24)
         button.backgroundColor = Theme.violetBack
         button.layer.cornerRadius = 38
-        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -58,7 +60,26 @@ class GamePrepViewController: UIViewController {
     //MARK: - Buttons Actions
     @objc func startButtonTapped() {
         let vc = GameViewController()
-        present(vc, animated: true)
+        let array = Tasks()
+        var questions  = array.taskSport
+        switch selectedCategory {
+        case  1:
+            questions = array.tasksGeography
+        case  2:
+            questions = array.taskSport
+        case  3:
+            questions = array.tasksAnimals
+        case  4:
+            questions = array.tasksArtFilms
+        case  5:
+            questions = array.tasksLiterature
+        case  6:
+            questions = array.tasksFood
+        default:
+            questions =  array.taskSport
+        }
+        vc.questionArray = array.getShuffleQuestions(taskArray: questions)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

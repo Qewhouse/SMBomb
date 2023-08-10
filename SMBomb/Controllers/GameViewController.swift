@@ -10,6 +10,9 @@ import Lottie
 
 class GameViewController: UIViewController {
     
+    var questionArray: [String]?
+    let tasks = Tasks()
+    
     //MARK: - UI Elements
     private lazy var backgroundImage: UIImageView = {
         let imagebackground = UIImageView()
@@ -57,8 +60,9 @@ class GameViewController: UIViewController {
     //MARK: - Button Actions
     @objc func pauseButtonTapped() {
         let vc = PauseScreen()
-        let navVC = UINavigationController(rootViewController: vc)
-        present(navVC, animated: true)
+//        let navVC = UINavigationController(rootViewController: vc)
+        present(vc, animated: true)
+       
         
         stopGame()
         func stopGame() {
@@ -79,11 +83,16 @@ class GameViewController: UIViewController {
         view.addSubview(explosionAnimation)
         view.addSubview(bombAnimation)
         
+        if let questionArray = questionArray {
+            titleLabel.text = questionArray[0]
+        } else {
+            titleLabel.text = tasks.tasksGeography[0]
+        }
+//
         
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        runTimer()
         
     }
     
@@ -115,37 +124,40 @@ class GameViewController: UIViewController {
         ])
     }
     
-   //MARK: - Timer
+    //MARK: - Timer
     
-        var totalTime = 10
-        var timePassed = 0
-        var timePaused = 0 
-        var timer : Timer
-    
+    var totalTime = 10
+    var timePassed = 0
+    var timePaused = 0
+    var timer = Timer()
+    var isPaused: Bool = false
+    var isRunning: Bool = false
+
+
     func updateTimer () {
-            if timePassed < totalTime {
-                timePassed += 1
-                
-                bombAnimation.play()
-            var timePause = timePassed
-                print(timePassed)
-                print(timePause)
-            } else {
-                timer.invalidate()
-                bombAnimation.pause()
-                bombAnimation = LottieAnimationView(name:"")
-                bombAnimation = LottieAnimationView(name: "explosionAnimation")
-                explosionAnimation.play()
-            }}
-            
-    func runTimer(){
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                self.updateTimer()
-            }}
-    
+        if timePassed < totalTime {
+            timePassed += 1
+            bombAnimation.play()
+            print(timePassed)
+
+        } else {
+            timer.invalidate()
+            bombAnimation.pause()
+            bombAnimation = LottieAnimationView(name:"")
+            bombAnimation = LottieAnimationView(name: "explosionAnimation")
+            explosionAnimation.play()
+        }}
+
+//    func setUpTimer(){
+//        timer.invalidate()
+//        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+//            self.updateTimer()
+//            self.timer = timer
+//        }}
+
 }
-        
-    
-    
-    
+
+
+
+
 
