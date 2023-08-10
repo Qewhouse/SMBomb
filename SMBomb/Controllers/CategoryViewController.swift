@@ -21,7 +21,7 @@ class CategoryViewController : UIViewController {
     private let viewStack: UIStackView = {
         let element = UIStackView()
         element.axis = .vertical
-        element.spacing = 20
+        element.spacing = 15
         element.alignment = .center
         element.distribution = .fillEqually
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -486,9 +486,10 @@ extension CategoryViewController {
             viewStack3.leadingAnchor.constraint(equalTo: viewStack.leadingAnchor, constant: 0),
             viewStack3.trailingAnchor.constraint(equalTo: viewStack.trailingAnchor, constant: 0),
             
-            viewStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
-            viewStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            viewStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+            viewStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            viewStack.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 10),
+            viewStack.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10),
+            viewStack.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -40)
         ])
     }
 }
