@@ -8,96 +8,118 @@
 import UIKit
 import SnapKit
 
-class RulesView: UIView {
+class CustomTextView: UIView {
+    private let textLabel = UILabel()
+    private let circleView = UIView()
+    private let numberLabel = UILabel()
+    private let buttonLabel = UILabel()
+    private let buttonView = UIView()
     
-    // MARK: - Properties
     
-    private let textRuleLabel = UILabel()
-    private let rulePointLabel = UILabel()
-    private let buttonNameExample = UILabel()
+    // Переменные для настройки данных
+    var labelText: String = "" {
+        didSet {
+            textLabel.text = labelText
+        }
+    }
     
-    // MARK: - Initializers
+    var number: Int = 0 {
+        didSet {
+            numberLabel.text = "\(number)"
+        }
+    }
     
-    init(textForRules: String, rulePoint: Int, buttonNameExample: String?) {
-        super.init(frame: .zero)
-        
+    var buttonLabelText: String? = "" {
+        didSet {
+            buttonLabel.text = buttonLabelText
+        }
+    }
+    
+    
+    // MARK: - Инициализация
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
-        setTextForRules(textForRules)
-        setRulePoint(rulePoint)
-        setButtonNameExample(buttonNameExample)
-        setupLayout()
+        setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+        setupConstraints()
     }
     
-    // MARK: - View Setup
+    // MARK: - Настройка элементов интерфейса
     
-    private func setupViews() {
-        setupLabel(textRuleLabel, withFont: 16, textColor: Theme.blackFont)
-        setupLabel(rulePointLabel, withFont: 16, textColor: Theme.yellowFont)
-        setupLabel(buttonNameExample, withFont: 12, textColor: Theme.yellowFont)
+    func setupViews() {
+        textLabel.textAlignment = .center
+        textLabel.textColor = Theme.grayFont
+        textLabel.font = UIFont(name: Theme.appFont, size: 16)
+        textLabel.numberOfLines = 0
+        addSubview(textLabel)
         
-        setupRoundedBackground(for: rulePointLabel, size: 29)
-        setupRoundedBackground(for: buttonNameExample, size: 20)
-    }
-    
-    private func setupLabel(_ label: UILabel, withFont fontSize: CGFloat, textColor: UIColor) {
-        label.font = UIFont(name: Theme.appFont, size: fontSize)
-        label.textColor = textColor
-        label.textAlignment = .center
-    }
-    
-    private func setupRoundedBackground(for view: UIView, size: CGFloat) {
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = Theme.violetBack
-        backgroundView.layer.borderWidth = 1
-        backgroundView.layer.borderColor = UIColor.black.cgColor
-        backgroundView.layer.cornerRadius = size / 2
+        circleView.backgroundColor = Theme.violetBack
+        circleView.layer.cornerRadius = 27/2
+        circleView.layer.borderWidth = 1
+        addSubview(circleView)
         
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
-        }
-    }
-    
-    // MARK: - Set Content
-    
-    private func setTextForRules(_ text: String) {
-        textRuleLabel.text = text
-    }
-    
-    private func setRulePoint(_ point: Int) {
-        rulePointLabel.text = String(point)
-    }
-    
-    private func setButtonNameExample(_ example: String?) {
-        buttonNameExample.text = example
-    }
-    
-    // MARK: - Layout
-    
-    private func setupLayout() {
-        addSubview(textRuleLabel)
-        addSubview(rulePointLabel)
-        addSubview(buttonNameExample)
+        numberLabel.textAlignment = .center
+        numberLabel.textColor = Theme.yellowFont
+        numberLabel.font = UIFont(name: Theme.appFont, size: 16)
         
-        textRuleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(40)
-            make.top.equalToSuperview().offset(10)
+        circleView.addSubview(numberLabel)
+        
+        if buttonLabelText != nil||buttonLabelText != "" {
+            setupButton()
         }
         
-        rulePointLabel.snp.makeConstraints { make in
-            make.left.equalTo(textRuleLabel.snp.right).offset(10)
-            make.centerY.equalTo(textRuleLabel)
-            make.width.height.equalTo(29)
+        func setupButton() {
+            buttonView.backgroundColor = Theme.violetBack
+            circleView.layer.cornerRadius = 27/2
+            circleView.layer.borderWidth = 1
+            addSubview(buttonView)
+            
+            buttonLabel.textAlignment = .center
+            buttonLabel.textColor = Theme.yellowFont
+            buttonLabel.font = UIFont(name: Theme.appFont, size: 12)
+            
+            buttonView.addSubview(buttonLabel)
+            
         }
         
-        buttonNameExample.snp.makeConstraints { make in
-            make.top.equalTo(textRuleLabel.snp.bottom).offset(10)
-            make.centerX.equalTo(textRuleLabel)
-            make.bottom.lessThanOrEqualToSuperview().offset(-10)
+        
+    }
+    
+    // MARK: - Настройка констрейнтов
+    
+    func setupConstraints() {
+        textLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(35)
+            make.trailing.equalToSuperview().offset(10)
+            make.width.equalTo(300)
         }
+        
+        circleView.snp.makeConstraints { make in
+            make.trailing.equalTo(textLabel.snp.leading).offset(-10)
+            make.width.height.equalTo(27)
+            make.top.equalTo(textLabel.snp.top)
+        }
+        
+        numberLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        buttonLabel.snp.makeConstraints { make in
+            make.top.equalTo(textLabel.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        buttonView.snp.makeConstraints { make in
+            make.edges.equalTo(buttonLabel)
+            make.height.equalTo(27)
+        }
+        
     }
 }

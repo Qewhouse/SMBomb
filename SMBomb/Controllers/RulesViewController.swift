@@ -21,6 +21,7 @@ class RulesViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .clear
+        scrollView.isScrollEnabled = true
         return scrollView
     }()
     
@@ -34,7 +35,73 @@ class RulesViewController: UIViewController {
         return label
     }()
     
-    let titleCategoriaLabel:UILabel = {
+    let ruleText1: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Все игроки становятся в круг."
+        view.number = 1
+        return view
+    }()
+    
+    let ruleText2: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Первый игрок берет телефон и нажимает кнопку:"
+        view.number = 2
+        return view
+    }()
+    
+    let buttonView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Theme.violetBack
+        view.layer.cornerRadius = 27/2
+        return view
+    }()
+    
+    let buttonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Начать игру"
+        label.textColor = Theme.yellowFont
+        label.font = UIFont(name: Theme.appFont, size: 12)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    
+    let ruleText3: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "На экране появляется вопрос “Назовите Фрукт”."
+        view.number = 3
+        return view
+    }()
+    
+    let ruleText4: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Игрок отвечает на вопрос и после правильного ответа передает телефон следующему игроку (правильность ответа определяют другие участники)."
+        view.number = 4
+        return view
+    }()
+    
+    let ruleText5: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Игроки по кругу отвечают на один и тот же вопрос до тех пор, пока не взорвется бомба."
+        view.number = 5
+        return view
+    }()
+    
+    let ruleText6: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Проигравшим считается тот, в чьих руках взорвалась бомба."
+        view.number = 6
+        return view
+    }()
+    
+    let ruleText7: CustomTextView = {
+        let view = CustomTextView()
+        view.labelText = "Если в настройках выбран режим игры “С Заданиями”, то проигравший выполняет задание."
+        view.number = 7
+        return view
+    }()
+    
+    let rulesTitleLabel2: UILabel = {
         let label = UILabel()
         label.text = "Категории"
         label.font = UIFont(name: Theme.appFont, size: 30)
@@ -44,15 +111,17 @@ class RulesViewController: UIViewController {
         return label
     }()
     
-    
-    let ruleTextForPoint:UILabel = {
-       let label = UILabel()
-        label.text = "Все игроки становятся в круг."
-        label.font = UIFont(name: Theme.appFont, size: 20)
-        label.textColor = Theme.blackFont
+    let rulesTextBehindTitle1:UILabel = {
+        let label = UILabel()
+        label.text = "В игре доступно 6 категорий и более 90 вопросов."
+        label.font = UIFont(name: Theme.appFont, size: 30)
+        label.textColor = Theme.grayFont
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
+    
+    
     
     
     
@@ -68,14 +137,14 @@ class RulesViewController: UIViewController {
     }
     
     func makeConstraints() {
-            bacgroundImageView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            
-            scrollView.snp.makeConstraints { make in
-                make.edges.equalTo(view.safeAreaLayoutGuide)
-            }
+        bacgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
     
     func setupView() {
         view.addSubview(bacgroundImageView)
@@ -84,55 +153,113 @@ class RulesViewController: UIViewController {
         setupScrollView()
     }
     
-    func setupTextRule(){
-        scrollView.addSubview(ruleTextForPoint)
-        let viewRound = viewForPoint(1)
-        scrollView.addSubview(viewRound)
-        
-        ruleTextForPoint.snp.makeConstraints { make in
-            make.top.equalTo(rulesTitleLabel.snp.bottom).offset(20)
-            make.leading.trailing.equalTo(scrollView).inset(40)
-        }
-        viewRound.snp.makeConstraints { make in
-            make.centerY.equalTo(ruleTextForPoint.snp.centerY)
-            make.trailing.equalTo(ruleTextForPoint.snp.leading).offset(-20)
-        }
-        
-    }
     
-    func viewForPoint(_ naumber:Int) ->UIView{
-        let view = UIView()
-        view.backgroundColor = Theme.violetBack
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.cornerRadius = 29 / 2
-        view.snp.makeConstraints { make in
-            make.height.width.equalTo(29)
-        }
-        
-        let label = UILabel()
-        label.text = "\(naumber)"
-        label.font = UIFont(name: Theme.appFont, size: 16)
-        label.textColor = Theme.yellowFont
-        label.textAlignment = .center
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.center.equalTo(view)
-        }
-        return view
-    }
+  
     
     func setupScrollView() {
-            scrollView.addSubview(rulesTitleLabel)
-            
-            rulesTitleLabel.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(20)
-                make.centerX.equalToSuperview()
-            }
+        scrollView.addSubview(rulesTitleLabel)
+        scrollView.addSubview(ruleText1)
+        scrollView.addSubview(ruleText2)
+        scrollView.addSubview(buttonView)
+        scrollView.addSubview(buttonLabel)
+        scrollView.addSubview(ruleText3)
+        scrollView.addSubview(ruleText4)
+        scrollView.addSubview(ruleText5)
+        scrollView.addSubview(ruleText6)
+        scrollView.addSubview(ruleText7)
+        scrollView.addSubview(rulesTitleLabel2)
+        scrollView.addSubview(rulesTextBehindTitle1)
         
-        setupTextRule()
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
             
-            scrollView.contentSize = CGSize(width: view.frame.width, height: ruleTextForPoint.frame.maxY + 20)
         }
+        
+        rulesTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        ruleText1.snp.makeConstraints { make in
+            make.top.equalTo(rulesTitleLabel.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(40)
+        }
+        
+        ruleText2.snp.makeConstraints { make in
+            make.top.equalTo(ruleText1.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(50)
+        }
+        
+        buttonView.snp.makeConstraints { make in
+            make.top.equalTo(ruleText2.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(110)
+            make.height.equalTo(27)
+        }
+        
+        buttonLabel.snp.makeConstraints { make in
+            make.center.equalTo(buttonView)
+        }
+        
+        
+        ruleText3.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(40)
+        }
+        
+        ruleText4.snp.makeConstraints { make in
+            make.top.equalTo(ruleText3.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(120)
+        }
+        
+        ruleText5.snp.makeConstraints { make in
+            make.top.equalTo(ruleText4.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(55)
+        }
+        
+        ruleText6.snp.makeConstraints { make in
+            make.top.equalTo(ruleText5.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(40)
+        }
+        
+        ruleText7.snp.makeConstraints { make in
+            make.top.equalTo(ruleText6.snp.bottom).offset(20)
+            make.leading.equalTo(scrollView.snp.leading).offset(10)
+            make.trailing.equalTo(scrollView.snp.trailing).offset(-10)
+            make.height.equalTo(90)
+        }
+        
+        rulesTitleLabel2.snp.makeConstraints { make in
+            make.top.equalTo(ruleText7.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        rulesTextBehindTitle1.snp.makeConstraints { make in
+            make.top.equalTo(rulesTitleLabel2.snp.bottom).offset(20)
+            make.width.equalTo(300)
+            make.centerX.equalToSuperview()
+            
+        }
+        
+        
+        
+        
+        
+        
+//        scrollView.contentSize = CGSize(width: view.frame.width, height: ruleTextForPoint.frame.maxY + 20)
+    }
 }
 
