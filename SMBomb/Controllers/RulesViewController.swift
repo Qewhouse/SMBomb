@@ -19,7 +19,6 @@ class RulesViewController: UIViewController {
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .clear
         scrollView.isScrollEnabled = true
         return scrollView
@@ -121,7 +120,37 @@ class RulesViewController: UIViewController {
         return label
     }()
     
+    let rulesTextBehindTitle2:UILabel = {
+        let label = UILabel()
+        label.text = "Можно выбрать сразу несколько категорий для игры."
+        label.font = UIFont(name: Theme.appFont, size: 30)
+        label.textColor = Theme.grayFont
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
     
+    private let buttonStackHorizontal1: UIStackView = {
+        let element = UIStackView()
+        element.axis = .horizontal
+        element.spacing = 8
+        element.alignment = .center
+        element.distribution = .fillEqually
+        return element
+    }()
+    private let buttonStackHorizontal2: UIStackView = {
+        let element = UIStackView()
+        element.axis = .horizontal
+        element.spacing = 8
+        element.alignment = .center
+        element.distribution = .fillEqually
+        return element
+    }()
+    
+    let viewCategoryButtonNature = RulesButtonLikeCategoryView(labelText: "Природа", imageForButton: UIImage(named: "natureLogo"))
+    let viewCategoryButtonCinema = RulesButtonLikeCategoryView(labelText: "Искусство и Кино", imageForButton: UIImage(named: "movieLogo"))
+    let viewCategoryButtonMiscellaneous = RulesButtonLikeCategoryView(labelText: "О Разном", imageForButton: UIImage(named: "miscLogo"))
+    let viewCategoryButtonSport = RulesButtonLikeCategoryView(labelText: "Спорт и Хобби", imageForButton: UIImage(named: "hobbyLogo"))
     
     
     
@@ -154,7 +183,7 @@ class RulesViewController: UIViewController {
     }
     
     
-  
+    
     
     func setupScrollView() {
         scrollView.addSubview(rulesTitleLabel)
@@ -169,11 +198,21 @@ class RulesViewController: UIViewController {
         scrollView.addSubview(ruleText7)
         scrollView.addSubview(rulesTitleLabel2)
         scrollView.addSubview(rulesTextBehindTitle1)
+        scrollView.addSubview(rulesTextBehindTitle2)
+        scrollView.addSubview(buttonStackHorizontal1)
+        scrollView.addSubview(buttonStackHorizontal2)
+        
+        buttonStackHorizontal1.addArrangedSubview(viewCategoryButtonNature)
+        buttonStackHorizontal1.addArrangedSubview(viewCategoryButtonCinema)
+        
+        buttonStackHorizontal2.addArrangedSubview(viewCategoryButtonMiscellaneous)
+        buttonStackHorizontal2.addArrangedSubview(viewCategoryButtonSport)
+        
         
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.bottom.equalToSuperview()
-            
+            make.bottom.equalTo(buttonStackHorizontal2.snp.bottom).offset(100)
         }
         
         rulesTitleLabel.snp.makeConstraints { make in
@@ -251,15 +290,45 @@ class RulesViewController: UIViewController {
             make.top.equalTo(rulesTitleLabel2.snp.bottom).offset(20)
             make.width.equalTo(300)
             make.centerX.equalToSuperview()
-            
+        }
+        
+        rulesTextBehindTitle2.snp.makeConstraints { make in
+            make.top.equalTo(rulesTextBehindTitle1.snp.bottom).offset(20)
+            make.width.equalTo(300)
+            make.centerX.equalToSuperview()
+        }
+        
+        viewCategoryButtonNature.snp.makeConstraints { make in
+            make.width.height.equalTo(145)
+        }
+        
+        viewCategoryButtonCinema.snp.makeConstraints { make in
+            make.width.height.equalTo(145)
+        }
+        
+        viewCategoryButtonMiscellaneous.snp.makeConstraints { make in
+            make.width.height.equalTo(145)
+        }
+        
+        viewCategoryButtonSport.snp.makeConstraints { make in
+            make.width.height.equalTo(145)
+        }
+        
+        buttonStackHorizontal1.snp.makeConstraints { make in
+            make.top.equalTo(rulesTextBehindTitle2.snp.bottom).offset(20)
+            make.centerX.equalTo(scrollView)
+            make.width.equalTo(300)
+            make.height.equalTo(145)
+        }
+        
+        buttonStackHorizontal2.snp.makeConstraints { make in
+            make.top.equalTo(buttonStackHorizontal1.snp.bottom).offset(8)
+            make.centerX.equalTo(scrollView)
+            make.width.equalTo(300)
+            make.height.equalTo(145)
         }
         
         
-        
-        
-        
-        
-//        scrollView.contentSize = CGSize(width: view.frame.width, height: ruleTextForPoint.frame.maxY + 20)
     }
 }
 
