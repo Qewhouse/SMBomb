@@ -58,12 +58,9 @@ class GamePrepViewController: UIViewController {
     //MARK: - Buttons Actions
     @objc func startButtonTapped() {
         let vc = GameViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true)
     }
     
-    @objc func pauseButtonTapped() {
-        
-    }
 }
 
 extension GamePrepViewController {
@@ -71,8 +68,6 @@ extension GamePrepViewController {
     //MARK: - View Set up
     private func setUpView() {
         title = "Игра"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
-        
         view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
         view.addSubview(bombImage)
