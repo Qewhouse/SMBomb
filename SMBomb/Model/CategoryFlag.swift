@@ -8,7 +8,7 @@
 import Foundation
 
 struct CategoryFlag {
-    static var isSelectedMisc = false
+    static var isSelectedMisc = true
     static var isSelectedHobby = false
     static var isSelectedLife = false
     static var isSelectedCelebs = false
