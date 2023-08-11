@@ -25,6 +25,8 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         let label = UILabel()
         label.text = "Назовите вид зимнего спорта"
         label.font = UIFont(name:"DelaGothicOne-Regular" , size: 32)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.textColor = Theme.violetFont
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -59,6 +61,9 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     ////        resumeTimer()
     //    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        timer?.invalidate()
+    }
     
     
     
@@ -103,6 +108,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 127),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            titleLabel.heightAnchor.constraint(equalToConstant: 150),
             
             bombAnimation.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             bombAnimation.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -123,38 +129,8 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     
     //MARK: - Timer
     
-    //    var totalTime = 10
-    //    var timePassed = 0
-    //    var timePaused = 0
-    //    var timer = Timer()
-    //    var isPaused: Bool = false
-    //    var isRunning: Bool = false
-    
-    
-    //    func updateTimer () {
-    //        if timePassed < totalTime {
-    //            timePassed += 1
-    //            bombAnimation.play()
-    //            print(timePassed)
-    //
-    //        } else {
-    //            timer.invalidate()
-    //            bombAnimation.pause()
-    //            bombAnimation = LottieAnimationView(name:"")
-    //            bombAnimation = LottieAnimationView(name: "explosionAnimation")
-    //            explosionAnimation.play()
-    //        }}
-    
-    //    func setUpTimer(){
-    //        timer.invalidate()
-    //        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-    //            self.updateTimer()
-    //            self.timer = timer
-    //        }}
-    
-    
     private var timer: Timer?
-    private var gameTime = 60
+    private var gameTime = 30
     private var counter = 0
     private var isPaused: Bool = false
     private var isRunning: Bool = false
@@ -190,7 +166,10 @@ class GameViewController: UIViewController, PauseScreenDelegate {
             bombAnimation.play()
             print(counter)
         } else {
+            bombAnimation.pause()
+            explosionAnimation.play()
             pauseTimer()
+            finalScreen()
         }
     }
 
@@ -203,6 +182,11 @@ class GameViewController: UIViewController, PauseScreenDelegate {
          vc.delegate = self
          navigationController?.pushViewController(vc, animated: true)
      }
+    
+    private func finalScreen() {
+        let vc = FinalScreenViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 
     private func resumeTimer() {
@@ -214,5 +198,6 @@ class GameViewController: UIViewController, PauseScreenDelegate {
            self.counter = counter
            setupTimer()
        }
-
+    //MARK: - Animation
+    
 }
