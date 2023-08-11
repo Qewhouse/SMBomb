@@ -98,7 +98,11 @@ class CategoryViewController : UIViewController {
     private let selectButton1: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedMisc == true {
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -107,7 +111,11 @@ class CategoryViewController : UIViewController {
     private let selectButton2: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedHobby == true{
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -187,7 +195,11 @@ class CategoryViewController : UIViewController {
     private let selectButton3: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedLife == true{
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -195,7 +207,11 @@ class CategoryViewController : UIViewController {
     private let selectButton4: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedCelebs == true{
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -272,7 +288,11 @@ class CategoryViewController : UIViewController {
     private let selectButton5: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedArt == true{
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -281,7 +301,12 @@ class CategoryViewController : UIViewController {
     private let selectButton6: UIImageView = {
         let element = UIImageView()
         //element.backgroundColor = Theme.violetBack
-        element.image = UIImage(systemName: "circle")
+        if CategoryFlag.isSelectedNature == true{
+            element.image = UIImage(systemName: "checkmark.circle.fill")
+        } else {
+            element.image = UIImage(systemName: "circle")
+        }
+
         element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
