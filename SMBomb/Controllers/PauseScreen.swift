@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PauseScreenDelegate: AnyObject {
+    func didResumeCounter(_ counter: Int)
+}
+
 class PauseScreen: UIViewController {
     
     // MARK: - UI elements
@@ -56,6 +60,7 @@ class PauseScreen: UIViewController {
     }()
     
     var pausedCounter = 0
+    weak var delegate: PauseScreenDelegate?
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -63,14 +68,14 @@ class PauseScreen: UIViewController {
         setUpView()
         setConstrains()
 
-    
+        navigationItem.hidesBackButton = true
         print("Paused counter is \(pausedCounter)")
     }
     
     //MARK: - Buttons Actions
     @objc func continueButtonTapped() {
+        delegate?.didResumeCounter(pausedCounter)
         navigationController?.popViewController(animated: true)
-
     }
     
     @objc func returnToMainButtonTapped() {
