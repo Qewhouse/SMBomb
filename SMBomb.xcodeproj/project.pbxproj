@@ -26,6 +26,7 @@
 		4CE098082A82C841000D17F6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE098072A82C841000D17F6 /* SnapKit */; };
 		4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098092A82DC5A000D17F6 /* FinalScreen.swift */; };
 		6D8C5EE82A83865200DB7DB6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */; };
+		6D8C5F102A864C3400DB7DB6 /* CategoryFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4CE098042A82C7C8000D17F6 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		4CE098092A82DC5A000D17F6 /* FinalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreen.swift; sourceTree = "<group>"; };
 		6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFlag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				3743FA932A842A41004688D7 /* Tasks.swift */,
 				4C2BF3EB2A83BABC0001F9D0 /* Punishment.swift */,
+				6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				3743FA0F2A8019DB004688D7 /* SceneDelegate.swift in Sources */,
 				4C2BF3EC2A83BABC0001F9D0 /* Punishment.swift in Sources */,
 				4C2BF3E82A83A5B90001F9D0 /* GameViewController.swift in Sources */,
+				6D8C5F102A864C3400DB7DB6 /* CategoryFlag.swift in Sources */,
 				4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */,
 				3743FA992A856EF7004688D7 /* RulesView.swift in Sources */,
 				3743FA942A842A41004688D7 /* Tasks.swift in Sources */,

@@ -8,7 +8,6 @@
 import UIKit
 
 class CategoryViewController : UIViewController {
-    
 // MARK: - constants
     private let imageView: UIImageView = {
         let element = UIImageView()
@@ -21,7 +20,7 @@ class CategoryViewController : UIViewController {
     private let viewStack: UIStackView = {
         let element = UIStackView()
         element.axis = .vertical
-        element.spacing = 20
+        element.spacing = 15
         element.alignment = .center
         element.distribution = .fillEqually
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -96,26 +95,20 @@ class CategoryViewController : UIViewController {
         return element
     }()
     
-    private let selectButton1: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton1: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
-    private let selectButton2: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton2: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -137,6 +130,9 @@ class CategoryViewController : UIViewController {
         element.layer.cornerRadius = 40
         return element
     }()
+   // UIImage(systemName: "checkmark.circle.fill")
+    //UIImage(systemName: "circle")
+    
     
     private let imageView3: UIImageView = {
         let element = UIImageView()
@@ -188,25 +184,19 @@ class CategoryViewController : UIViewController {
         return element
     }()
     
-    private let selectButton3: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton3: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
-    private let selectButton4: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton4: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -279,26 +269,20 @@ class CategoryViewController : UIViewController {
         return element
     }()
     
-    private let selectButton5: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton5: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
-    private let selectButton6: UIButton = {
-        let element = UIButton()
-        element.frame.size.width = 28
-        element.frame.size.height = 28
-        element.layer.cornerRadius = 14
-        element.layer.borderWidth = 2
-        element.layer.borderColor = UIColor.white.cgColor
-        element.backgroundColor = Theme.violetBack
+    private let selectButton6: UIImageView = {
+        let element = UIImageView()
+        //element.backgroundColor = Theme.violetBack
+        element.image = UIImage(systemName: "circle")
+        element.tintColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -319,20 +303,70 @@ extension CategoryViewController {
     private func configureNavBar(){
         let titleLabel = UILabel()
         titleLabel.text = "Кaтегории"
-        titleLabel.font = UIFont(name: Theme.appFont, size: 24)
+        titleLabel.font = UIFont(name: Theme.appFont, size: 35)
         titleLabel.textColor = Theme.violetFont
         navigationItem.titleView = titleLabel
     }
     
-    @objc private func isSelected(element: UIButton){
-        if selectButton1.currentImage == UIImage(named: "selectLogo") {
-            selectButton1.backgroundColor = Theme.violetBack
+    @objc private func selectOne(){
+        if CategoryFlag.isSelectedMisc == false{
+            selectButton1.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedMisc = true
         } else {
-            selectButton1.backgroundColor = .clear
-            selectButton1.setImage(UIImage(named: "selectLogo"), for: .normal)
+            selectButton1.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedMisc = false
         }
     }
     
+    @objc private func selectTwo(){
+        if CategoryFlag.isSelectedHobby == false{
+            selectButton2.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedHobby = true
+        } else {
+            selectButton2.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedHobby = false
+        }
+    }
+    
+    @objc private func selectThree(){
+        if CategoryFlag.isSelectedLife == false{
+            selectButton3.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedLife = true
+        } else {
+            selectButton3.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedLife = false
+        }
+    }
+    @objc private func selectFour(){
+        if CategoryFlag.isSelectedCelebs == false{
+            selectButton4.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedCelebs = true
+        } else {
+            selectButton4.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedCelebs = false
+        }
+    }
+    
+    @objc private func selectFive(){
+        if CategoryFlag.isSelectedArt == false{
+            selectButton5.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedArt = true
+        } else {
+            selectButton5.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedArt = false
+        }
+    }
+    
+    @objc private func selectSix(){
+        if CategoryFlag.isSelectedNature == false{
+            selectButton6.image = UIImage(systemName: "checkmark.circle.fill")
+            CategoryFlag.isSelectedNature = true
+        } else {
+            selectButton6.image = UIImage(systemName: "circle")
+            CategoryFlag.isSelectedNature = false
+        }
+    }
+
     private func setView(){
         imageView.frame = view.bounds
         view.addSubview(imageView)
@@ -340,32 +374,42 @@ extension CategoryViewController {
         categoryView1.addSubview(imageView1)
         categoryView1.addSubview(categoryLabel1)
         categoryView1.addSubview(selectButton1)
-        let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(isSelected))
+        let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(selectOne))
         categoryView1.addGestureRecognizer(recognizer1)
         
         categoryView2.addSubview(imageView2)
         categoryView2.addSubview(categoryLabel2)
         categoryView2.addSubview(selectButton2)
+        let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(selectTwo))
+        categoryView2.addGestureRecognizer(recognizer2)
         viewStack1.addArrangedSubview(categoryView1)
         viewStack1.addArrangedSubview(categoryView2)
         
         categoryView3.addSubview(imageView3)
         categoryView3.addSubview(categoryLabel3)
         categoryView3.addSubview(selectButton3)
+        let recognizer3 = UITapGestureRecognizer(target: self, action: #selector(selectThree))
+        categoryView3.addGestureRecognizer(recognizer3)
         
         categoryView4.addSubview(imageView4)
         categoryView4.addSubview(categoryLabel4)
         categoryView4.addSubview(selectButton4)
+        let recognizer4 = UITapGestureRecognizer(target: self, action: #selector(selectFour))
+        categoryView4.addGestureRecognizer(recognizer4)
         viewStack2.addArrangedSubview(categoryView3)
         viewStack2.addArrangedSubview(categoryView4)
         
         categoryView5.addSubview(imageView5)
         categoryView5.addSubview(categoryLabel5)
         categoryView5.addSubview(selectButton5)
+        let recognizer5 = UITapGestureRecognizer(target: self, action: #selector(selectFive))
+        categoryView5.addGestureRecognizer(recognizer5)
         
         categoryView6.addSubview(imageView6)
         categoryView6.addSubview(categoryLabel6)
         categoryView6.addSubview(selectButton6)
+        let recognizer6 = UITapGestureRecognizer(target: self, action: #selector(selectSix))
+        categoryView6.addGestureRecognizer(recognizer6)
         viewStack3.addArrangedSubview(categoryView5)
         viewStack3.addArrangedSubview(categoryView6)
         
@@ -393,6 +437,7 @@ extension CategoryViewController {
             selectButton1.topAnchor.constraint(equalTo: categoryView1.topAnchor, constant: 10),
             selectButton1.leadingAnchor.constraint(equalTo: categoryView1.leadingAnchor, constant: 10),
             selectButton1.widthAnchor.constraint(equalTo: selectButton1.heightAnchor, multiplier: 1.0),
+            selectButton1.trailingAnchor.constraint(equalTo: categoryView1.trailingAnchor, constant: -140),
             
             imageView2.topAnchor.constraint(equalTo: categoryView2.topAnchor, constant: 20),
             imageView2.leadingAnchor.constraint(equalTo: categoryView2.leadingAnchor, constant: 20),
@@ -410,6 +455,7 @@ extension CategoryViewController {
             selectButton2.topAnchor.constraint(equalTo: categoryView2.topAnchor, constant: 10),
             selectButton2.leadingAnchor.constraint(equalTo: categoryView2.leadingAnchor, constant: 10),
             selectButton2.widthAnchor.constraint(equalTo: selectButton2.heightAnchor, multiplier: 1.0),
+            selectButton2.trailingAnchor.constraint(equalTo: categoryView2.trailingAnchor, constant: -140),
             
             imageView3.topAnchor.constraint(equalTo: categoryView3.topAnchor, constant: 20),
             imageView3.leadingAnchor.constraint(equalTo: categoryView3.leadingAnchor, constant: 20),
@@ -427,6 +473,7 @@ extension CategoryViewController {
             selectButton3.topAnchor.constraint(equalTo: categoryView3.topAnchor, constant: 10),
             selectButton3.leadingAnchor.constraint(equalTo: categoryView3.leadingAnchor, constant: 10),
             selectButton3.widthAnchor.constraint(equalTo: selectButton3.heightAnchor, multiplier: 1.0),
+            selectButton3.trailingAnchor.constraint(equalTo: categoryView3.trailingAnchor, constant: -140),
             
             imageView4.topAnchor.constraint(equalTo: categoryView4.topAnchor, constant: 20),
             imageView4.leadingAnchor.constraint(equalTo: categoryView4.leadingAnchor, constant: 20),
@@ -444,6 +491,7 @@ extension CategoryViewController {
             selectButton4.topAnchor.constraint(equalTo: categoryView4.topAnchor, constant: 10),
             selectButton4.leadingAnchor.constraint(equalTo: categoryView4.leadingAnchor, constant: 10),
             selectButton4.widthAnchor.constraint(equalTo: selectButton4.heightAnchor, multiplier: 1.0),
+            selectButton4.trailingAnchor.constraint(equalTo: categoryView4.trailingAnchor, constant: -140),
             
             imageView5.topAnchor.constraint(equalTo: categoryView5.topAnchor, constant: 20),
             imageView5.leadingAnchor.constraint(equalTo: categoryView5.leadingAnchor, constant: 20),
@@ -461,6 +509,7 @@ extension CategoryViewController {
             selectButton5.topAnchor.constraint(equalTo: categoryView5.topAnchor, constant: 10),
             selectButton5.leadingAnchor.constraint(equalTo: categoryView5.leadingAnchor, constant: 10),
             selectButton5.widthAnchor.constraint(equalTo: selectButton5.heightAnchor, multiplier: 1.0),
+            selectButton5.trailingAnchor.constraint(equalTo: categoryView5.trailingAnchor, constant: -140),
             
             imageView6.topAnchor.constraint(equalTo: categoryView6.topAnchor, constant: 20),
             imageView6.leadingAnchor.constraint(equalTo: categoryView6.leadingAnchor, constant: 20),
@@ -478,6 +527,7 @@ extension CategoryViewController {
             selectButton6.topAnchor.constraint(equalTo: categoryView6.topAnchor, constant: 10),
             selectButton6.leadingAnchor.constraint(equalTo: categoryView6.leadingAnchor, constant: 10),
             selectButton6.widthAnchor.constraint(equalTo: selectButton6.heightAnchor, multiplier: 1.0),
+            selectButton6.trailingAnchor.constraint(equalTo: categoryView6.trailingAnchor, constant: -140),
             
             viewStack1.leadingAnchor.constraint(equalTo: viewStack.leadingAnchor, constant: 0),
             viewStack1.trailingAnchor.constraint(equalTo: viewStack.trailingAnchor, constant: 0),
@@ -486,9 +536,10 @@ extension CategoryViewController {
             viewStack3.leadingAnchor.constraint(equalTo: viewStack.leadingAnchor, constant: 0),
             viewStack3.trailingAnchor.constraint(equalTo: viewStack.trailingAnchor, constant: 0),
             
-            viewStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
-            viewStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            viewStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+            viewStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+            viewStack.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 10),
+            viewStack.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10),
+            viewStack.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -300)
         ])
     }
 }
