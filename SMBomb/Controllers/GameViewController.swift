@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, PauseScreenDelegate {
     
     var questionArray: [String]?
     let tasks = Tasks()
@@ -51,17 +51,27 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setConstrains()
+        resumeTimer()
     }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        togglePause()
+    ////        resumeTimer()
+    //    }
+    
+    
+    
     
     //MARK: - Button Actions
     @objc func pauseButtonTapped() {
         let vc = PauseScreen()
         navigationController?.pushViewController(vc, animated: true)
-       
-        stopGame()
-        func stopGame() {
-            timer.invalidate()
-        }}
+        
+        //        stopGame()
+        //        func stopGame() {
+        //            timer.invalidate()
+        //    }
+    }
     
     //MARK: - View Setup
     func setUpView() {
@@ -69,7 +79,7 @@ class GameViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"),
                                                             style: .plain,
                                                             target: self,
-                                                            action: #selector(pauseButtonTapped))
+                                                            action: #selector(pauseActionTapped))
         
         view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
@@ -113,38 +123,96 @@ class GameViewController: UIViewController {
     
     //MARK: - Timer
     
-    var totalTime = 10
-    var timePassed = 0
-    var timePaused = 0
-    var timer = Timer()
-    var isPaused: Bool = false
-    var isRunning: Bool = false
+    //    var totalTime = 10
+    //    var timePassed = 0
+    //    var timePaused = 0
+    //    var timer = Timer()
+    //    var isPaused: Bool = false
+    //    var isRunning: Bool = false
+    
+    
+    //    func updateTimer () {
+    //        if timePassed < totalTime {
+    //            timePassed += 1
+    //            bombAnimation.play()
+    //            print(timePassed)
+    //
+    //        } else {
+    //            timer.invalidate()
+    //            bombAnimation.pause()
+    //            bombAnimation = LottieAnimationView(name:"")
+    //            bombAnimation = LottieAnimationView(name: "explosionAnimation")
+    //            explosionAnimation.play()
+    //        }}
+    
+    //    func setUpTimer(){
+    //        timer.invalidate()
+    //        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+    //            self.updateTimer()
+    //            self.timer = timer
+    //        }}
+    
+    
+    private var timer: Timer?
+    private var gameTime = 60
+    private var counter = 0
+    private var isPaused: Bool = false
+    private var isRunning: Bool = false
 
-
-    func updateTimer () {
-        if timePassed < totalTime {
-            timePassed += 1
-            bombAnimation.play()
-            print(timePassed)
-
+    // MARK: - pause
+    func togglePause() {
+        if isPaused {
+            setupTimer()
         } else {
-            timer.invalidate()
-            bombAnimation.pause()
-            bombAnimation = LottieAnimationView(name:"")
-            bombAnimation = LottieAnimationView(name: "explosionAnimation")
-            explosionAnimation.play()
-        }}
+            pauseTimer()
+        }
+        isPaused = !isPaused
+    }
 
-//    func setUpTimer(){
-//        timer.invalidate()
-//        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-//            self.updateTimer()
-//            self.timer = timer
-//        }}
+    private func setupTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(timerTick),
+                                     userInfo: nil,
+                                     repeats: true)
+        isRunning = true
+    }
+
+    private func pauseTimer() {
+        timer?.invalidate()
+        isRunning = false
+    }
+
+    @objc private func timerTick() {
+        if counter < gameTime {
+            counter += 1
+            bombAnimation.play()
+            print(counter)
+        } else {
+            pauseTimer()
+        }
+    }
+
+    @objc private func pauseActionTapped() {
+         guard isRunning else { return }
+         pauseTimer()
+
+         let vc = PauseScreen()
+         vc.pausedCounter = counter
+         vc.delegate = self
+         navigationController?.pushViewController(vc, animated: true)
+     }
+
+
+    private func resumeTimer() {
+        if !isRunning {
+            setupTimer()
+        }
+    }
+    func didResumeCounter(_ counter: Int) {
+           self.counter = counter
+           setupTimer()
+       }
 
 }
-
-
-
-
-
