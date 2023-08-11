@@ -73,7 +73,7 @@ class FinalScreenViewController: UIViewController {
     
     func setupView() {
         title = "ИГРА"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"), style: .plain, target: self, action: #selector(pauseButtonTapped))
+        navigationItem.hidesBackButton = true
         
         view.addSubview(backgroundImage)
         view.addSubview(firstLabel)
@@ -127,9 +127,6 @@ extension FinalScreenViewController {
         
     }
     @objc func newGameButtonTapped(){
-        
-    }
-    @objc func pauseButtonTapped() {
         
     }
 }
