@@ -130,7 +130,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     //MARK: - Timer
     
     private var timer: Timer?
-    private var gameTime = 30
+    private var gameTime = 10
     private var counter = 0
     private var isPaused: Bool = false
     private var isRunning: Bool = false
@@ -167,6 +167,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
             print(counter)
         } else {
             bombAnimation.pause()
+            bombAnimation.isHidden = true
             explosionAnimation.play()
             pauseTimer()
             finalScreen()
