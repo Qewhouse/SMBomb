@@ -124,10 +124,11 @@ class FinalScreenViewController: UIViewController {
 
 extension FinalScreenViewController {
     @objc func anotherGameButtonTapped() {
-        
+        let vc = GameViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func newGameButtonTapped(){
-        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
