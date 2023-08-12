@@ -183,6 +183,8 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     @objc private func pauseActionTapped() {
         guard isRunning else { return }
         pauseTimer()
+        player.stop()
+        
         
         let vc = PauseScreen()
         vc.pausedCounter = counter

@@ -22,6 +22,8 @@
 		4C2BF3EC2A83BABC0001F9D0 /* Punishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2BF3EB2A83BABC0001F9D0 /* Punishment.swift */; };
 		4C2BF3EE2A84D5B50001F9D0 /* PauseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2BF3ED2A84D5B50001F9D0 /* PauseScreen.swift */; };
 		4C2BF3F12A84E82C0001F9D0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4C2BF3F02A84E82C0001F9D0 /* Lottie */; };
+		4C8EBACC2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EBACA2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 */; };
+		4C8EBACD2A877B3B00F8D6E4 /* explosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EBACB2A877B3B00F8D6E4 /* explosionSound.mp3 */; };
 		4CE098052A82C7C8000D17F6 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098042A82C7C8000D17F6 /* StartScreenView.swift */; };
 		4CE098082A82C841000D17F6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE098072A82C841000D17F6 /* SnapKit */; };
 		4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098092A82DC5A000D17F6 /* FinalScreen.swift */; };
@@ -46,6 +48,8 @@
 		4C2BF3E72A83A5B90001F9D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4C2BF3EB2A83BABC0001F9D0 /* Punishment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Punishment.swift; path = SMBomb/Controllers/Punishment.swift; sourceTree = SOURCE_ROOT; };
 		4C2BF3ED2A84D5B50001F9D0 /* PauseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScreen.swift; sourceTree = "<group>"; };
+		4C8EBACA2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tikane-taymera-bombyi.mp3"; sourceTree = "<group>"; };
+		4C8EBACB2A877B3B00F8D6E4 /* explosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosionSound.mp3; sourceTree = "<group>"; };
 		4CE098042A82C7C8000D17F6 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		4CE098092A82DC5A000D17F6 /* FinalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreen.swift; sourceTree = "<group>"; };
 		6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			children = (
 				3743FA272A8025DE004688D7 /* Fonts */,
 				3743FA152A8019DC004688D7 /* Assets.xcassets */,
+				4C8EBAC92A877B3B00F8D6E4 /* Sounds */,
 				3743FA252A801FAE004688D7 /* Theme.swift */,
 			);
 			path = Resources;
@@ -161,6 +166,15 @@
 				3743FA962A856EF7004688D7 /* RulesView.swift */,
 			);
 			path = RulesView;
+			sourceTree = "<group>";
+		};
+		4C8EBAC92A877B3B00F8D6E4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4C8EBACA2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 */,
+				4C8EBACB2A877B3B00F8D6E4 /* explosionSound.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +245,8 @@
 			files = (
 				3743FA192A8019DC004688D7 /* LaunchScreen.storyboard in Resources */,
 				3743FA162A8019DC004688D7 /* Assets.xcassets in Resources */,
+				4C8EBACD2A877B3B00F8D6E4 /* explosionSound.mp3 in Resources */,
+				4C8EBACC2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 in Resources */,
 				3743FA292A802606004688D7 /* DelaGothicOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
