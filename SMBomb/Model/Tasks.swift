@@ -110,9 +110,34 @@ struct Tasks{
         "Назовите часть туши при разделке",
         "Назовите один из основных вкусов"]
     
-    func getShuffleQuestions(taskArray: [String]) -> [String]
+    func getShuffleQuestions() -> [String]
         {
-            return taskArray.shuffled()
+            var finalArray: [String] = []
+            
+            if CategoryFlag.isSelectedMisc == true {
+                finalArray.append(contentsOf: tasksGeography)
+            }
+            if CategoryFlag.isSelectedHobby == true {
+                finalArray.append(contentsOf: taskSport)
+            }
+            if CategoryFlag.isSelectedLife == true {
+                finalArray.append(contentsOf: tasksFood)
+            }
+            if CategoryFlag.isSelectedCelebs == true {
+                finalArray.append(contentsOf: tasksLiterature)
+            }
+            if CategoryFlag.isSelectedArt == true {
+                finalArray.append(contentsOf: tasksArtFilms)
+            }
+            if CategoryFlag.isSelectedNature == true {
+                finalArray.append(contentsOf: tasksAnimals)
+            }
+            
+            if finalArray.count == 0 {
+                finalArray.append(contentsOf: tasksGeography)
+            }
+            
+            return finalArray.shuffled()
         }
 }
     

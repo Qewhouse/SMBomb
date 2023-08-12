@@ -61,25 +61,6 @@ class GamePrepViewController: UIViewController {
     @objc func startButtonTapped() {
         print("go to game screen")
         let vc = GameViewController()
-        let array = Tasks()
-        var questions  = array.taskSport
-        switch selectedCategory {
-        case  1:
-            questions = array.tasksGeography
-        case  2:
-            questions = array.taskSport
-        case  3:
-            questions = array.tasksAnimals
-        case  4:
-            questions = array.tasksArtFilms
-        case  5:
-            questions = array.tasksLiterature
-        case  6:
-            questions = array.tasksFood
-        default:
-            questions =  array.taskSport
-        }
-        vc.questionArray = array.getShuffleQuestions(taskArray: questions)
         navigationController?.pushViewController(vc, animated: true)
     }
     

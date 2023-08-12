@@ -11,7 +11,7 @@ import AVFoundation
 
 class GameViewController: UIViewController, PauseScreenDelegate {
     
-    var questionArray: [String]?
+    var questionArray: [String] = []
     let tasks = Tasks()
     var player: AVAudioPlayer!
     
@@ -53,6 +53,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        questionArray = tasks.getShuffleQuestions()
         setUpView()
         setConstrains()
         resumeTimer()
@@ -66,6 +67,13 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         timer?.invalidate()
+        isRunning = false
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpQuestions()
         
     }
     
@@ -83,6 +91,14 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     }
     
     //MARK: - View Setup
+    
+    func setUpQuestions() {
+        
+        titleLabel.text = questionArray[0]
+        questionArray.remove(at: 0)
+        
+    }
+    
     func setUpView() {
         title = "Игра"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "pauseButton"),
@@ -94,13 +110,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         view.addSubview(titleLabel)
         view.addSubview(explosionAnimation)
         view.addSubview(bombAnimation)
-        
-        if let questionArray = questionArray {
-            titleLabel.text = questionArray[0]
-        } else {
-            titleLabel.text = tasks.tasksGeography[0]
-        }
-        
+    
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
