@@ -184,9 +184,10 @@ class GameViewController: UIViewController, PauseScreenDelegate {
             player.stop()
             explosionSound()
             bombAnimation.pause()
+            bombAnimation.isHidden = true
             explosionAnimation.play()
             pauseTimer()
-            finalScreen()
+            setupTimerForNextScreen()
         }
     }
     
