@@ -28,6 +28,8 @@ class FinalScreenViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont(name: Theme.appFont, size: 24)
         label.textColor = Theme.violetFont
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
     
@@ -104,12 +106,13 @@ class FinalScreenViewController: UIViewController {
         }
         
         punishmentLabel.snp.makeConstraints { make in
-            make.top.equalTo (bombaImage.snp.bottom).offset(0)
+            make.top.equalTo (bombaImage.snp.bottom).offset(15)
             make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(120)
             make.centerX.equalToSuperview()
         }
         startButton.snp.makeConstraints { make in
-            make.top.equalTo (punishmentLabel.snp.bottom).offset(10)
+            make.top.equalTo (punishmentLabel.snp.bottom).offset(15)
             make.height.equalTo(79)
             make.width.equalTo(274)
             make.centerX.equalToSuperview()
