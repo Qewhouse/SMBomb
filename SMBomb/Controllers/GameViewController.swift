@@ -57,37 +57,18 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         setUpView()
         setConstrains()
         resumeTimer()
-        
+        setUpQuestions()
     }
-    
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        togglePause()
-    ////        resumeTimer()
-    //    }
     
     override func viewWillDisappear(_ animated: Bool) {
         timer?.invalidate()
         isRunning = false
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setUpQuestions()
-        
-    }
-    
-    
     
     //MARK: - Button Actions
     @objc func pauseButtonTapped() {
         let vc = PauseScreen()
         navigationController?.pushViewController(vc, animated: true)
-        
-        //        stopGame()
-        //        func stopGame() {
-        //            timer.invalidate()
-        //    }
     }
     
     //MARK: - View Setup
@@ -187,12 +168,12 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     @objc private func timerTick() {
         if counter < gameTime {
             counter += 1
-            tickSound()
+            playSound("tikane-taymera-bombyi")
             bombAnimation.play()
             print(counter)
         } else {
             player.stop()
-            explosionSound()
+            playSound("explosionSound")
             bombAnimation.pause()
             bombAnimation.isHidden = true
             explosionAnimation.play()
@@ -237,25 +218,22 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         self.counter = counter
         setupTimer()
     }
-    //MARK: - Animation
-    
-    
     
     //MARK: - Audio
-    
-    func tickSound() {
-        let url = Bundle.main.url(forResource: "tikane-taymera-bombyi", withExtension: "mp3")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
         
-    }
-    
-    func explosionSound() {
-        let url = Bundle.main.url(forResource: "explosionSound", withExtension: "mp3")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
-        
-    }
+    func playSound(_ sound: String) {
+            guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+                
+                guard let player = player else { return }
+                player.play()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
     
 }
 
