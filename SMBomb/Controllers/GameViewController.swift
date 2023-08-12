@@ -185,6 +185,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         pauseTimer()
         player.stop()
         
+        
         let vc = PauseScreen()
         vc.pausedCounter = counter
         vc.delegate = self
