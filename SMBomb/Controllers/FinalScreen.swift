@@ -20,9 +20,10 @@ class FinalScreenViewController: UIViewController {
         label.textColor = Theme.blackFont
         return label
     }()
-    lazy var ladoshiLabel: UILabel = {
+    lazy var punishmentLabel: UILabel = {
+        let punishmentStruct = Punishment()
         let label = UILabel()
-        label.text = "В следующем раунде после каждого ответа хлопать в ладоши"
+        label.text = punishmentStruct.getPunishment()
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont(name: Theme.appFont, size: 24)
@@ -80,7 +81,7 @@ class FinalScreenViewController: UIViewController {
         view.addSubview(bombaImage)
         view.addSubview(startButton)
         view.addSubview(categoryButton)
-        view.addSubview(ladoshiLabel)
+        view.addSubview(punishmentLabel)
     }
     
     
@@ -102,13 +103,13 @@ class FinalScreenViewController: UIViewController {
             make.width.equalToSuperview().offset(-15)
         }
         
-        ladoshiLabel.snp.makeConstraints { make in
+        punishmentLabel.snp.makeConstraints { make in
             make.top.equalTo (bombaImage.snp.bottom).offset(0)
             make.trailing.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
         startButton.snp.makeConstraints { make in
-            make.top.equalTo (ladoshiLabel.snp.bottom).offset(10)
+            make.top.equalTo (punishmentLabel.snp.bottom).offset(10)
             make.height.equalTo(79)
             make.width.equalTo(274)
             make.centerX.equalToSuperview()
