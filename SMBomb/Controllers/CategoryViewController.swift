@@ -50,7 +50,6 @@ class CategoryViewController : UIViewController {
         element.image = UIImage(named: "miscLogo")
         element.backgroundColor = .clear
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -78,7 +77,6 @@ class CategoryViewController : UIViewController {
         let element = UIImageView()
         element.image = UIImage(named: "hobbyLogo")
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -97,7 +95,6 @@ class CategoryViewController : UIViewController {
     
     private let selectButton1: UIImageView = {
         let element = UIImageView()
-        //element.backgroundColor = Theme.violetBack
         if CategoryFlag.isSelectedMisc == true {
             element.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
@@ -110,7 +107,6 @@ class CategoryViewController : UIViewController {
     
     private let selectButton2: UIImageView = {
         let element = UIImageView()
-        //element.backgroundColor = Theme.violetBack
         if CategoryFlag.isSelectedHobby == true{
             element.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
@@ -138,8 +134,6 @@ class CategoryViewController : UIViewController {
         element.layer.cornerRadius = 40
         return element
     }()
-   // UIImage(systemName: "checkmark.circle.fill")
-    //UIImage(systemName: "circle")
     
     
     private let imageView3: UIImageView = {
@@ -147,7 +141,6 @@ class CategoryViewController : UIViewController {
         element.image = UIImage(named: "lifeLogo")
         element.backgroundColor = .clear
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -175,7 +168,6 @@ class CategoryViewController : UIViewController {
         let element = UIImageView()
         element.image = UIImage(named: "celebsLogo")
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -194,7 +186,6 @@ class CategoryViewController : UIViewController {
     
     private let selectButton3: UIImageView = {
         let element = UIImageView()
-        //element.backgroundColor = Theme.violetBack
         if CategoryFlag.isSelectedLife == true{
             element.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
@@ -206,7 +197,6 @@ class CategoryViewController : UIViewController {
     }()
     private let selectButton4: UIImageView = {
         let element = UIImageView()
-        //element.backgroundColor = Theme.violetBack
         if CategoryFlag.isSelectedCelebs == true{
             element.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
@@ -240,7 +230,6 @@ class CategoryViewController : UIViewController {
         element.image = UIImage(named: "movieLogo")
         element.backgroundColor = .clear
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -268,7 +257,6 @@ class CategoryViewController : UIViewController {
         let element = UIImageView()
         element.image = UIImage(named: "natureLogo")
         element.contentMode = .scaleToFill
-        //element.clipsToBounds = true
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -287,7 +275,6 @@ class CategoryViewController : UIViewController {
     
     private let selectButton5: UIImageView = {
         let element = UIImageView()
-        //element.backgroundColor = Theme.violetBack
         if CategoryFlag.isSelectedArt == true{
             element.image = UIImage(systemName: "checkmark.circle.fill")
         } else {

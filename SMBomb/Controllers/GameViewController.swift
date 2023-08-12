@@ -58,6 +58,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         setConstrains()
         resumeTimer()
         setUpQuestions()
+        navigationItem.hidesBackButton = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,7 +126,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     //MARK: - Timer
     
     private var timer: Timer?
-    private var gameTime = 30
+    private var gameTime = 5
     private var counter = 0
     private var counterForNextScreen = 0
     private var isPaused: Bool = false
