@@ -7,11 +7,13 @@
 
 import UIKit
 import Lottie
+import AVFoundation
 
 class GameViewController: UIViewController, PauseScreenDelegate {
     
     var questionArray: [String]?
     let tasks = Tasks()
+    var player: AVAudioPlayer!
     
     //MARK: - UI Elements
     private lazy var backgroundImage: UIImageView = {
@@ -54,6 +56,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         setUpView()
         setConstrains()
         resumeTimer()
+        
     }
     
     //    override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +66,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         timer?.invalidate()
+        
     }
     
     
@@ -134,7 +138,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     private var counter = 0
     private var isPaused: Bool = false
     private var isRunning: Bool = false
-
+    
     // MARK: - pause
     func togglePause() {
         if isPaused {
@@ -144,7 +148,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         }
         isPaused = !isPaused
     }
-
+    
     private func setupTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1.0,
@@ -154,50 +158,73 @@ class GameViewController: UIViewController, PauseScreenDelegate {
                                      repeats: true)
         isRunning = true
     }
-
+    
     private func pauseTimer() {
         timer?.invalidate()
         isRunning = false
     }
-
+    
     @objc private func timerTick() {
         if counter < gameTime {
             counter += 1
+            tickSound()
             bombAnimation.play()
             print(counter)
         } else {
+            player.stop()
+            explosionSound()
             bombAnimation.pause()
             explosionAnimation.play()
             pauseTimer()
             finalScreen()
         }
     }
-
+    
     @objc private func pauseActionTapped() {
-         guard isRunning else { return }
-         pauseTimer()
-
-         let vc = PauseScreen()
-         vc.pausedCounter = counter
-         vc.delegate = self
-         navigationController?.pushViewController(vc, animated: true)
-     }
+        guard isRunning else { return }
+        pauseTimer()
+        
+        let vc = PauseScreen()
+        vc.pausedCounter = counter
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func finalScreen() {
         let vc = FinalScreenViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-
-
+    
+    
     private func resumeTimer() {
         if !isRunning {
             setupTimer()
         }
     }
     func didResumeCounter(_ counter: Int) {
-           self.counter = counter
-           setupTimer()
-       }
+        self.counter = counter
+        setupTimer()
+    }
     //MARK: - Animation
     
+    
+    
+    //MARK: - Audio
+    
+    func tickSound() {
+        let url = Bundle.main.url(forResource: "tikane-taymera-bombyi", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+        
+    }
+    
+    func explosionSound() {
+        let url = Bundle.main.url(forResource: "explosionSound", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+        
+    }
+    
 }
+
+
