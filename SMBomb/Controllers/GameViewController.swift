@@ -136,6 +136,7 @@ class GameViewController: UIViewController, PauseScreenDelegate {
     private var timer: Timer?
     private var gameTime = 30
     private var counter = 0
+    private var counterForNextScreen = 0
     private var isPaused: Bool = false
     private var isRunning: Bool = false
     
@@ -159,6 +160,15 @@ class GameViewController: UIViewController, PauseScreenDelegate {
         isRunning = true
     }
     
+    private func setupTimerForNextScreen(){
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                         target: self,
+                                         selector: #selector(timerTickForNextScreen),
+                                         userInfo: nil,
+                                         repeats: true)
+        }
+    
     private func pauseTimer() {
         timer?.invalidate()
         isRunning = false
@@ -179,6 +189,15 @@ class GameViewController: UIViewController, PauseScreenDelegate {
             finalScreen()
         }
     }
+    
+    @objc private func timerTickForNextScreen(){
+            if counterForNextScreen < 2{
+                counterForNextScreen += 1
+            }
+            else{
+                finalScreen()
+            }
+        }
     
     @objc private func pauseActionTapped() {
         guard isRunning else { return }
