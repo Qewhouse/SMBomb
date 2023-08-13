@@ -136,6 +136,11 @@ struct Tasks{
             
             if finalArray.count == 0 {
                 finalArray.append(contentsOf: tasksGeography)
+                finalArray.append(contentsOf: taskSport)
+                finalArray.append(contentsOf: tasksFood)
+                finalArray.append(contentsOf: tasksLiterature)
+                finalArray.append(contentsOf: tasksArtFilms)
+                finalArray.append(contentsOf: tasksAnimals)
             }
             
             return finalArray.shuffled()

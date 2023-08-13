@@ -35,6 +35,7 @@
 		84589DC42A88543E00178D5D /* SettingsSwitcherFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */; };
 		84589DC72A885AB100178D5D /* firstBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84589DC52A885AB100178D5D /* firstBackgroundMusic.mp3 */; };
 		84589DC82A885AB100178D5D /* secondBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84589DC62A885AB100178D5D /* secondBackgroundMusic.mp3 */; };
+		84589DCA2A88A3CA00178D5D /* SettingsPopUpFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DC92A88A3CA00178D5D /* SettingsPopUpFlags.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitcherFlag.swift; sourceTree = "<group>"; };
 		84589DC52A885AB100178D5D /* firstBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = firstBackgroundMusic.mp3; path = ../../../../Downloads/firstBackgroundMusic.mp3; sourceTree = "<group>"; };
 		84589DC62A885AB100178D5D /* secondBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = secondBackgroundMusic.mp3; path = ../../../../Downloads/secondBackgroundMusic.mp3; sourceTree = "<group>"; };
+		84589DC92A88A3CA00178D5D /* SettingsPopUpFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopUpFlags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */,
 				84589DC12A88287300178D5D /* SettingsButtonFlag.swift */,
 				84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */,
+				84589DC92A88A3CA00178D5D /* SettingsPopUpFlags.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				3743FA992A856EF7004688D7 /* RulesView.swift in Sources */,
 				3743FA942A842A41004688D7 /* Tasks.swift in Sources */,
 				4C2BF3EE2A84D5B50001F9D0 /* PauseScreen.swift in Sources */,
+				84589DCA2A88A3CA00178D5D /* SettingsPopUpFlags.swift in Sources */,
 				3743FA982A856EF7004688D7 /* RulesViewController.swift in Sources */,
 				4CE098052A82C7C8000D17F6 /* StartScreenView.swift in Sources */,
 			);

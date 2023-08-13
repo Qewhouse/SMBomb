@@ -102,3 +102,45 @@ class RulesButtonLikeCategoryView: UIView {
         }
     }
 }
+
+class buttonForRules :UIView {
+    
+    let nameButtonLabel :UILabel = {
+        let element = UILabel()
+        element.textColor = Theme.violetFont
+        element.font = UIFont(name: Theme.appFont, size: 20)
+        element.textAlignment = .center
+        element.numberOfLines = 1
+        return element
+    }()
+    
+    init (labelText: String) {
+        super.init(frame: .zero)
+        self.nameButtonLabel.text = labelText
+        self.backgroundColor = Theme.yellowBack
+        self.layer.cornerRadius = 35/2
+        self.layer.borderWidth = 1
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews(){
+        addSubviewsToButton()
+    }
+    
+    private func addSubviewsToButton() {
+        let views: [UIView] = [nameButtonLabel]
+        views.forEach { self.addSubview($0) }
+        makeConstraints()
+    }
+    
+    
+    private func makeConstraints() {
+        nameButtonLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+}

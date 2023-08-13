@@ -126,8 +126,31 @@ class SettingsViewController:UIViewController{
         element.isOn = SettingsSwitcherFlag.backgroundMusicFlag
         return element
     }()
-    var miniScreenView: UIView!
-    private let buttonToShowMiniScreen: UIButton = {
+    var miniScreenViewForBacgroundMusic: UIView!
+    
+    var miniScreenViewForTickBomb: UIView!
+    
+    var miniScreenViewForBoomBomb: UIView!
+    
+    private let buttonToShowMiniScreenForBackgroundMusic: UIButton = {
+        var element = UIButton()
+        element.setTitle("Мелодия 1", for: .normal)
+        element.backgroundColor = .clear
+        element.titleLabel?.font = UIFont(name: Theme.appFont, size: 20)
+        element.setTitleColor(Theme.blackFont, for: .normal)
+        return element
+    }()
+    
+    private let buttonToShowMinScrForTickBomb:UIButton = {
+        var element = UIButton()
+        element.setTitle("Мелодия 1", for: .normal)
+        element.backgroundColor = .clear
+        element.titleLabel?.font = UIFont(name: Theme.appFont, size: 20)
+        element.setTitleColor(Theme.blackFont, for: .normal)
+        return element
+    }()
+    
+    private let buttonToShowMinScrForBoomBomb:UIButton = {
         var element = UIButton()
         element.setTitle("Мелодия 1", for: .normal)
         element.backgroundColor = .clear
@@ -144,7 +167,18 @@ class SettingsViewController:UIViewController{
     
     private let buttonThirdMusicBacground = ButtonForMiniScree(labelText: "Мелодия 3", isActive: false)
     
-
+    private let buttonFirstTickBomb = ButtonForMiniScree(labelText: "Мелодия 1", isActive: true)
+    
+    private let buttonSecondTickBomb = ButtonForMiniScree(labelText: "Мелодия 2", isActive: false)
+    
+    private let buttonThirdTickBomb = ButtonForMiniScree(labelText: "Мелодия 3", isActive: false)
+    
+    private let buttonFirstBoomBomb = ButtonForMiniScree(labelText: "Мелодия 1", isActive: true)
+    
+    private let buttonSecondBoomBomb = ButtonForMiniScree(labelText: "Мелодия 2", isActive: false)
+    
+    private let buttonThirdBoomBomb = ButtonForMiniScree(labelText: "Мелодия 3", isActive: false)
+    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -168,7 +202,9 @@ class SettingsViewController:UIViewController{
         view.addSubview(labelBackgroundMusic)
         view.addSubview(switcherForBackgroundMusic)
         view.addSubview(labelBacgroundMusicForPicker)
-        view.addSubview(buttonToShowMiniScreen)
+        view.addSubview(buttonToShowMiniScreenForBackgroundMusic)
+        view.addSubview(buttonToShowMinScrForTickBomb)
+        view.addSubview(buttonToShowMinScrForBoomBomb)
 
         view.addSubview(labelTickSoundBomb)
         view.addSubview(labelSoundBoomBomb)
@@ -239,31 +275,121 @@ class SettingsViewController:UIViewController{
     }
     
     func setupButton() {
-        buttonToShowMiniScreen.addTarget(self, action: #selector(showMiniScreen), for: .touchUpInside)
-        view.addSubview(buttonToShowMiniScreen)
+        buttonToShowMiniScreenForBackgroundMusic.addTarget(self, action: #selector(showMiniScreenForBackgroundMusic), for: .touchUpInside)
+        buttonToShowMinScrForTickBomb.addTarget(self, action: #selector(showMiniScreenForTickBomb), for: .touchUpInside)
+        buttonToShowMinScrForBoomBomb.addTarget(self, action: #selector(showMiniScreenForBoomBomb), for: .touchUpInside)
     }
 //MARK: - MiniScreen
-    func setupMiniScreenView() {
-        miniScreenView = UIView()
-        miniScreenView.backgroundColor = .white
-        miniScreenView.layer.cornerRadius = 20
-        miniScreenView.layer.borderWidth = 0.2
-        view.addSubview(miniScreenView)
-
-        miniScreenView.snp.makeConstraints { make in
-            make.bottom.equalTo(buttonToShowMiniScreen.snp.top).offset(-10)
+    func setupMiniScreenViewBoomBomb(){
+        miniScreenViewForBoomBomb = UIView()
+        miniScreenViewForBoomBomb.backgroundColor = .white
+        miniScreenViewForBoomBomb.layer.cornerRadius = 20
+        miniScreenViewForBoomBomb.layer.borderWidth = 0.2
+        view.addSubview(miniScreenViewForBoomBomb)
+        
+        miniScreenViewForBoomBomb.snp.makeConstraints { make in
+            make.bottom.equalTo(buttonToShowMinScrForBoomBomb.snp.top).offset(-10)
             make.trailing.equalToSuperview().offset(-10)
             make.width.equalTo(200)
             make.height.equalTo(100)
         }
         
-        miniScreenView.addSubview(buttonFirstMusicBacground)
-        miniScreenView.addSubview(buttonSecondMusicBacground)
-        miniScreenView.addSubview(buttonThirdMusicBacground)
+        miniScreenViewForBoomBomb.addSubview(buttonFirstBoomBomb)
+        miniScreenViewForBoomBomb.addSubview(buttonSecondBoomBomb)
+        miniScreenViewForBoomBomb.addSubview(buttonThirdBoomBomb)
         
-        buttonFirstMusicBacground.addTarget(self, action: #selector(hideMiniScreen), for: .touchUpInside)
-        buttonSecondMusicBacground.addTarget(self, action: #selector(hideMiniScreen), for: .touchUpInside)
-        buttonThirdMusicBacground.addTarget(self, action: #selector(hideMiniScreen), for: .touchUpInside)
+        buttonFirstBoomBomb.addTarget(self, action: #selector(buttonFirstBoomTupped), for: .touchUpInside)
+        buttonSecondBoomBomb.addTarget(self, action: #selector(buttonSecondBoomTupped), for: .touchUpInside)
+        buttonThirdBoomBomb.addTarget(self, action: #selector(buttonThirdBoomTupped), for: .touchUpInside)
+        
+        buttonFirstBoomBomb.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+        
+        buttonSecondBoomBomb.snp.makeConstraints { make in
+            make.top.equalTo(buttonFirstBoomBomb.snp.bottom).offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+        
+        buttonThirdBoomBomb.snp.makeConstraints { make in
+            make.top.equalTo(buttonSecondBoomBomb.snp.bottom).offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+        
+    }
+    
+    func setupMiniScreenViewForTickBomb(){
+        miniScreenViewForTickBomb = UIView()
+        miniScreenViewForTickBomb.backgroundColor = .white
+        miniScreenViewForTickBomb.layer.cornerRadius = 20
+        miniScreenViewForTickBomb.layer.borderWidth = 0.2
+        view.addSubview(miniScreenViewForTickBomb)
+        
+        miniScreenViewForTickBomb.snp.makeConstraints { make in
+            make.bottom.equalTo(buttonToShowMinScrForTickBomb.snp.top).offset(-10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.width.equalTo(200)
+            make.height.equalTo(100)
+        }
+        
+        miniScreenViewForTickBomb.addSubview(buttonFirstTickBomb)
+        miniScreenViewForTickBomb.addSubview(buttonSecondTickBomb)
+        miniScreenViewForTickBomb.addSubview(buttonThirdTickBomb)
+        
+        buttonFirstTickBomb.addTarget(self, action: #selector(buttonFirstTickTupped), for: .touchUpInside)
+        buttonSecondTickBomb.addTarget(self, action: #selector(buttonSecondTickTupped), for: .touchUpInside)
+        buttonThirdTickBomb.addTarget(self, action: #selector(buttonThirdTickTupped), for: .touchUpInside)
+        
+        buttonFirstTickBomb.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+        
+        buttonSecondTickBomb.snp.makeConstraints { make in
+            make.top.equalTo(buttonFirstTickBomb.snp.bottom).offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+        
+        buttonThirdTickBomb.snp.makeConstraints { make in
+            make.top.equalTo(buttonSecondTickBomb.snp.bottom).offset(1)
+            make.leading.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(32)
+        }
+    }
+    
+    func setupMiniScreenViewForBackgroundMusic() {
+        miniScreenViewForBacgroundMusic = UIView()
+        miniScreenViewForBacgroundMusic.backgroundColor = .white
+        miniScreenViewForBacgroundMusic.layer.cornerRadius = 20
+        miniScreenViewForBacgroundMusic.layer.borderWidth = 0.2
+        view.addSubview(miniScreenViewForBacgroundMusic)
+
+        miniScreenViewForBacgroundMusic.snp.makeConstraints { make in
+            make.bottom.equalTo(buttonToShowMiniScreenForBackgroundMusic.snp.top).offset(-10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.width.equalTo(200)
+            make.height.equalTo(100)
+        }
+        
+        miniScreenViewForBacgroundMusic.addSubview(buttonFirstMusicBacground)
+        miniScreenViewForBacgroundMusic.addSubview(buttonSecondMusicBacground)
+        miniScreenViewForBacgroundMusic.addSubview(buttonThirdMusicBacground)
+        
+        buttonFirstMusicBacground.addTarget(self, action: #selector(buttonFirstMusicBackTupped), for: .touchUpInside)
+        buttonSecondMusicBacground.addTarget(self, action: #selector(buttonSecondMusicTupped), for: .touchUpInside)
+        buttonThirdMusicBacground.addTarget(self, action: #selector(buttonThirdMusicTupped), for: .touchUpInside)
         
         buttonFirstMusicBacground.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(1)
@@ -287,16 +413,124 @@ class SettingsViewController:UIViewController{
         }
     }
 
-    @objc func showMiniScreen() {
-        if miniScreenView == nil {
-            setupMiniScreenView()
+    @objc func showMiniScreenForBackgroundMusic() {
+        if miniScreenViewForBacgroundMusic == nil {
+            setupMiniScreenViewForBackgroundMusic()
+        }
+    }
+    
+    @objc func showMiniScreenForTickBomb() {
+        if miniScreenViewForTickBomb == nil {
+            setupMiniScreenViewForTickBomb()
+        }
+    }
+    
+    @objc func showMiniScreenForBoomBomb() {
+        if miniScreenViewForBoomBomb == nil {
+            setupMiniScreenViewBoomBomb()
         }
     }
 
-    @objc func hideMiniScreen() {
-        miniScreenView.removeFromSuperview()
-        miniScreenView = nil
+    @objc func hideMiniScreenBackMusic() {
+        miniScreenViewForBacgroundMusic.removeFromSuperview()
+        miniScreenViewForBacgroundMusic = nil
     }
+    
+    @objc func hideMiniScreenTickBomb() {
+        miniScreenViewForTickBomb.removeFromSuperview()
+        miniScreenViewForTickBomb = nil
+    }
+    
+    @objc func hideMiniScreenBoomBomb() {
+        miniScreenViewForBoomBomb.removeFromSuperview()
+        miniScreenViewForBoomBomb = nil
+    }
+    //MARK: - Action For Background Music
+    @objc func buttonFirstMusicBackTupped() {
+        buttonFirstMusicBacground.showCheckmark(true)
+        buttonSecondMusicBacground.showCheckmark(false)
+        buttonThirdMusicBacground.showCheckmark(false)
+        buttonToShowMiniScreenForBackgroundMusic.titleLabel?.text = buttonFirstMusicBacground.titleLabel?.text
+        SettingsBackgroundMusic.updateMemory(buttonFirstMusicBacground.titleLabel?.text ?? "")
+        hideMiniScreenBackMusic()
+    }
+    
+    @objc func buttonSecondMusicTupped(){
+        buttonFirstMusicBacground.showCheckmark(false)
+        buttonSecondMusicBacground.showCheckmark(true)
+        buttonThirdMusicBacground.showCheckmark(false)
+        buttonToShowMiniScreenForBackgroundMusic.titleLabel?.text = buttonSecondMusicBacground.titleLabel?.text
+        SettingsBackgroundMusic.updateMemory(buttonSecondMusicBacground.titleLabel?.text ?? "")
+        hideMiniScreenBackMusic()
+    }
+    
+    @objc func buttonThirdMusicTupped(){
+        buttonFirstMusicBacground.showCheckmark(false)
+        buttonSecondMusicBacground.showCheckmark(false)
+        buttonThirdMusicBacground.showCheckmark(true)
+        buttonToShowMiniScreenForBackgroundMusic.titleLabel?.text = buttonThirdMusicBacground.titleLabel?.text
+        SettingsBackgroundMusic.updateMemory(buttonThirdMusicBacground.titleLabel?.text ?? "")
+        hideMiniScreenBackMusic()
+    }
+    //MARK: - Action for tick bomb
+    @objc func buttonFirstTickTupped(){
+        buttonFirstTickBomb.showCheckmark(true)
+        buttonSecondTickBomb.showCheckmark(false)
+        buttonThirdTickBomb.showCheckmark(false)
+        buttonToShowMinScrForTickBomb.titleLabel?.text = buttonFirstTickBomb.titleLabel?.text
+        SettingsTickSound.updateMemory(buttonFirstTickBomb.titleLabel?.text ?? "")
+        hideMiniScreenTickBomb()
+    }
+    
+    @objc func buttonSecondTickTupped(){
+        buttonFirstTickBomb.showCheckmark(false)
+        buttonSecondTickBomb.showCheckmark(true)
+        buttonThirdTickBomb.showCheckmark(false)
+        buttonToShowMinScrForTickBomb.titleLabel?.text = buttonSecondTickBomb.titleLabel?.text
+        SettingsTickSound.updateMemory(buttonSecondTickBomb.titleLabel?.text ?? "")
+        hideMiniScreenTickBomb()
+    }
+    
+    @objc func buttonThirdTickTupped(){
+        buttonFirstTickBomb.showCheckmark(false)
+        buttonSecondTickBomb.showCheckmark(false)
+        buttonThirdTickBomb.showCheckmark(true)
+        buttonToShowMinScrForTickBomb.titleLabel?.text = buttonThirdTickBomb.titleLabel?.text
+        SettingsTickSound.updateMemory(buttonThirdTickBomb.titleLabel?.text ?? "")
+        hideMiniScreenTickBomb()
+    }
+    
+    //MARK: - Action for boom bomb
+    
+    @objc func buttonFirstBoomTupped(){
+        buttonFirstBoomBomb.showCheckmark(true)
+        buttonSecondBoomBomb.showCheckmark(false)
+        buttonThirdBoomBomb.showCheckmark(false)
+        buttonToShowMinScrForBoomBomb.titleLabel?.text = buttonFirstBoomBomb.titleLabel?.text
+        SettingsBombSound.updateMemory(buttonFirstBoomBomb.titleLabel?.text ?? "")
+        hideMiniScreenBoomBomb()
+    }
+    
+    @objc func buttonSecondBoomTupped(){
+        buttonFirstBoomBomb.showCheckmark(false)
+        buttonSecondBoomBomb.showCheckmark(true)
+        buttonThirdBoomBomb.showCheckmark(false)
+        buttonToShowMinScrForBoomBomb.titleLabel?.text = buttonSecondBoomBomb.titleLabel?.text
+        SettingsBombSound.updateMemory(buttonSecondBoomBomb.titleLabel?.text ?? "")
+        hideMiniScreenBoomBomb()
+    }
+    
+    @objc func buttonThirdBoomTupped(){
+        buttonFirstBoomBomb.showCheckmark(false)
+        buttonSecondBoomBomb.showCheckmark(false)
+        buttonThirdBoomBomb.showCheckmark(true)
+        buttonToShowMinScrForBoomBomb.titleLabel?.text = buttonThirdBoomBomb.titleLabel?.text
+        SettingsBombSound.updateMemory(buttonThirdBoomBomb.titleLabel?.text ?? "")
+        hideMiniScreenBoomBomb()
+    }
+    
+    
+    
     
     func changeFlagShortTime(){
         SettingsButtonFlag.isSelectedShortTime = true
@@ -354,8 +588,9 @@ class SettingsViewController:UIViewController{
         buttonViewAvarageTime.backgroundColor = Theme.yellowBack
         buttonViewAvarageTime.nameButtonLabel.textColor = Theme.violetFont
         buttonViewLongTime.backgroundColor = Theme.yellowBack
-        buttonViewLongTime.nameButtonLabel.textColor = Theme.yellowFont
+        buttonViewLongTime.nameButtonLabel.textColor = Theme.violetFont
         buttonViewRandomTime.backgroundColor = Theme.violetBack
+        buttonViewRandomTime.nameButtonLabel.textColor = Theme.yellowFont
     }
     
     func checkFlag(){
@@ -429,11 +664,7 @@ class SettingsViewController:UIViewController{
             make.top.equalTo(labelBackgroundMusic.snp.bottom).offset(30)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
-        buttonToShowMiniScreen.snp.makeConstraints { make in
-            make.centerY.equalTo(labelBacgroundMusicForPicker.snp.centerY)
-            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-        }
-        buttonToShowMiniScreen.snp.makeConstraints { make in
+        buttonToShowMiniScreenForBackgroundMusic.snp.makeConstraints { make in
             make.centerY.equalTo(labelBacgroundMusicForPicker.snp.centerY)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
@@ -443,11 +674,20 @@ class SettingsViewController:UIViewController{
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
+        buttonToShowMinScrForTickBomb.snp.makeConstraints { make in
+            make.centerY.equalTo(labelTickSoundBomb.snp.centerY)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
         labelSoundBoomBomb.snp.makeConstraints { make in
             make.top.equalTo(labelTickSoundBomb.snp.bottom).offset(30)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
+        buttonToShowMinScrForBoomBomb.snp.makeConstraints { make in
+            make.centerY.equalTo(labelSoundBoomBomb.snp.centerY)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
     }
     
 }

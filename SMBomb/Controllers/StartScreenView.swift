@@ -71,7 +71,7 @@ class StartScreenviewController: UIViewController {
     
     lazy var settingsButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "rulesButton"), for: .normal)
+        button.setImage(UIImage(named: "settingsLogo"), for: .normal)
         button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -82,15 +82,12 @@ class StartScreenviewController: UIViewController {
         
         loadAudioFile("firstBackgroundMusic")
         prepareAudioPlayer()
-        playAudio()
         setupView()
         makeConstraint()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadAudioFile("firstBackgroundMusic")
-        prepareAudioPlayer()
         playAudio()
     }
     
