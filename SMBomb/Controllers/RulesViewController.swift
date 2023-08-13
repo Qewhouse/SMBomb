@@ -157,7 +157,7 @@ class RulesViewController: UIViewController {
         title = "Помощь"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: Theme.violetFont,
-            NSAttributedString.Key.font: UIFont(name: Theme.appFont, size: 30)
+            NSAttributedString.Key.font: UIFont(name: Theme.appFont, size: 30)!
         ]
         setupView()
     }

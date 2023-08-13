@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
 
 class StartScreenviewController: UIViewController {
+    var audioPlayer: AVAudioPlayer?
     //MARK: - UI Elements
     lazy var firstLabel: UILabel = {
         let label = UILabel()
@@ -67,12 +69,29 @@ class StartScreenviewController: UIViewController {
         return button
     }()
     
+    lazy var settingsButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "rulesButton"), for: .normal)
+        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadAudioFile("firstBackgroundMusic")
+        prepareAudioPlayer()
+        playAudio()
         setupView()
         makeConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadAudioFile("firstBackgroundMusic")
+        prepareAudioPlayer()
+        playAudio()
     }
     
     //MARK: - Methods
@@ -85,6 +104,7 @@ class StartScreenviewController: UIViewController {
         view.addSubview(startButton)
         view.addSubview(categoryButton)
         view.addSubview(rulesButton)
+        view.addSubview(settingsButton)
     }
 }
 //MARK: - Constraints
@@ -129,7 +149,55 @@ extension StartScreenviewController {
             make.height.equalTo(62)
             make.width.equalTo(62)
         }
+        settingsButton.snp.makeConstraints { make in
+            make.top.equalTo (categoryButton.snp.bottom).offset(0)
+            make.leading.equalToSuperview().offset(20)
+            make.height.equalTo(62)
+            make.width.equalTo(62)
+        }
+    
     }
+    //MARK: - Audio
+    
+    func loadAudioFile(_ musicName:String) {
+        if let audioFilePath = Bundle.main.path(forResource: musicName, ofType: "mp3") {
+            let audioFileURL = URL(fileURLWithPath: audioFilePath)
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                audioPlayer = try AVAudioPlayer(contentsOf: audioFileURL, fileTypeHint: AVFileType.mp3.rawValue)
+                
+                guard let audioPlayer = audioPlayer else { return }
+            } catch {
+                print("Error loading audio file: \(error)")
+            }
+        }
+    }
+    
+    func prepareAudioPlayer() {
+        audioPlayer?.numberOfLoops = -1
+        audioPlayer?.prepareToPlay()
+    }
+    
+    func playAudio() {
+        if SettingsSwitcherFlag.backgroundMusicFlag{
+            if let player = audioPlayer {
+                if !player.isPlaying {
+                    player.play()
+                }
+            }
+        }
+        else{
+            if let player = audioPlayer {
+                if player.isPlaying {
+                    player.stop()
+                }
+            }
+        }
+    }
+    
+
+
 }
 
 //MARK: - Button Actions
@@ -149,6 +217,12 @@ extension StartScreenviewController {
     @objc func rulesButtonTapped() {
         print("tap-tap rules")
         let vc = RulesViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func settingsButtonTapped() {
+        print("tap-tap settings")
+        let vc = SettingsViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

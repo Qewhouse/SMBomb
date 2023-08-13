@@ -29,6 +29,12 @@
 		4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098092A82DC5A000D17F6 /* FinalScreen.swift */; };
 		6D8C5EE82A83865200DB7DB6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */; };
 		6D8C5F102A864C3400DB7DB6 /* CategoryFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */; };
+		84589DBD2A880C5E00178D5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DBC2A880C5E00178D5D /* SettingsViewController.swift */; };
+		84589DC02A880DC100178D5D /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DBF2A880DC100178D5D /* buttonView.swift */; };
+		84589DC22A88287300178D5D /* SettingsButtonFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DC12A88287300178D5D /* SettingsButtonFlag.swift */; };
+		84589DC42A88543E00178D5D /* SettingsSwitcherFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */; };
+		84589DC72A885AB100178D5D /* firstBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84589DC52A885AB100178D5D /* firstBackgroundMusic.mp3 */; };
+		84589DC82A885AB100178D5D /* secondBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84589DC62A885AB100178D5D /* secondBackgroundMusic.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,12 @@
 		4CE098092A82DC5A000D17F6 /* FinalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreen.swift; sourceTree = "<group>"; };
 		6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFlag.swift; sourceTree = "<group>"; };
+		84589DBC2A880C5E00178D5D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84589DBF2A880DC100178D5D /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonView.swift; sourceTree = "<group>"; };
+		84589DC12A88287300178D5D /* SettingsButtonFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonFlag.swift; sourceTree = "<group>"; };
+		84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitcherFlag.swift; sourceTree = "<group>"; };
+		84589DC52A885AB100178D5D /* firstBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = firstBackgroundMusic.mp3; path = ../../../../Downloads/firstBackgroundMusic.mp3; sourceTree = "<group>"; };
+		84589DC62A885AB100178D5D /* secondBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = secondBackgroundMusic.mp3; path = ../../../../Downloads/secondBackgroundMusic.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +125,8 @@
 				3743FA932A842A41004688D7 /* Tasks.swift */,
 				4C2BF3EB2A83BABC0001F9D0 /* Punishment.swift */,
 				6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */,
+				84589DC12A88287300178D5D /* SettingsButtonFlag.swift */,
+				84589DC32A88543E00178D5D /* SettingsSwitcherFlag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +134,7 @@
 		3743FA222A801E74004688D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84589DBE2A880D9100178D5D /* SettingsButtonView */,
 				3743FA9B2A856F03004688D7 /* RulesView */,
 				3743FA172A8019DC004688D7 /* LaunchScreen.storyboard */,
 			);
@@ -136,6 +151,7 @@
 				4C2BF3E72A83A5B90001F9D0 /* GameViewController.swift */,
 				4C2BF3ED2A84D5B50001F9D0 /* PauseScreen.swift */,
 				4CE098092A82DC5A000D17F6 /* FinalScreen.swift */,
+				84589DBC2A880C5E00178D5D /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -171,10 +187,20 @@
 		4C8EBAC92A877B3B00F8D6E4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				84589DC52A885AB100178D5D /* firstBackgroundMusic.mp3 */,
+				84589DC62A885AB100178D5D /* secondBackgroundMusic.mp3 */,
 				4C8EBACA2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 */,
 				4C8EBACB2A877B3B00F8D6E4 /* explosionSound.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		84589DBE2A880D9100178D5D /* SettingsButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				84589DBF2A880DC100178D5D /* buttonView.swift */,
+			);
+			path = SettingsButtonView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,8 +272,10 @@
 				3743FA192A8019DC004688D7 /* LaunchScreen.storyboard in Resources */,
 				3743FA162A8019DC004688D7 /* Assets.xcassets in Resources */,
 				4C8EBACD2A877B3B00F8D6E4 /* explosionSound.mp3 in Resources */,
+				84589DC82A885AB100178D5D /* secondBackgroundMusic.mp3 in Resources */,
 				4C8EBACC2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 in Resources */,
 				3743FA292A802606004688D7 /* DelaGothicOne-Regular.ttf in Resources */,
+				84589DC72A885AB100178D5D /* firstBackgroundMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,13 +287,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3743FA9A2A856EF7004688D7 /* RulesButtonLikeCategoryView.swift in Sources */,
+				84589DC42A88543E00178D5D /* SettingsSwitcherFlag.swift in Sources */,
 				4C2BF3E62A836FC90001F9D0 /* GamePrepViewController.swift in Sources */,
 				3743FA262A801FAE004688D7 /* Theme.swift in Sources */,
 				6D8C5EE82A83865200DB7DB6 /* CategoryViewController.swift in Sources */,
 				3743FA0D2A8019DB004688D7 /* AppDelegate.swift in Sources */,
 				3743FA0F2A8019DB004688D7 /* SceneDelegate.swift in Sources */,
 				4C2BF3EC2A83BABC0001F9D0 /* Punishment.swift in Sources */,
+				84589DBD2A880C5E00178D5D /* SettingsViewController.swift in Sources */,
+				84589DC02A880DC100178D5D /* buttonView.swift in Sources */,
 				4C2BF3E82A83A5B90001F9D0 /* GameViewController.swift in Sources */,
+				84589DC22A88287300178D5D /* SettingsButtonFlag.swift in Sources */,
 				6D8C5F102A864C3400DB7DB6 /* CategoryFlag.swift in Sources */,
 				4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */,
 				3743FA992A856EF7004688D7 /* RulesView.swift in Sources */,

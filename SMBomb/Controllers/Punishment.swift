@@ -23,8 +23,12 @@ struct Punishment {
     var punishmentNumber  = 0
     
     func  getPunishment() -> String {
-        return punishment.randomElement()!
-        
+        if SettingsSwitcherFlag.punishmentFlag {
+            return punishment.randomElement()!
+        }
+        else{
+            return ""
+        }
     }
 }
 

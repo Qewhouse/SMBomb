@@ -16,6 +16,7 @@ enum Theme {
     static let violetBack: UIColor = UIColor(named: "VioletBack")!
     static let violetFont: UIColor = UIColor(named: "VioletFont")!
     static let yellowFont: UIColor = UIColor(named: "YellowFont")!
+    static let yellowBack: UIColor = UIColor(named: "YellowBack")!
 
     //MARK: Font
     static let appFont: String = "DelaGothicOne-Regular"
