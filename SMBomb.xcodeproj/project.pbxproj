@@ -29,8 +29,8 @@
 		4CE0980A2A82DC5A000D17F6 /* FinalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE098092A82DC5A000D17F6 /* FinalScreen.swift */; };
 		6D8C5EE82A83865200DB7DB6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */; };
 		6D8C5F102A864C3400DB7DB6 /* CategoryFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */; };
-		841CB4D32A88D8E200CD2363 /* firstBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 841CB4D22A88D8E200CD2363 /* firstBackgroundMusic.mp3 */; };
-		841CB4D52A88D8EA00CD2363 /* secondBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 841CB4D42A88D8EA00CD2363 /* secondBackgroundMusic.mp3 */; };
+		841CB4D82A88D96C00CD2363 /* secondBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 841CB4D62A88D96C00CD2363 /* secondBackgroundMusic.mp3 */; };
+		841CB4D92A88D96C00CD2363 /* firstBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 841CB4D72A88D96C00CD2363 /* firstBackgroundMusic.mp3 */; };
 		84589DBD2A880C5E00178D5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DBC2A880C5E00178D5D /* SettingsViewController.swift */; };
 		84589DC02A880DC100178D5D /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DBF2A880DC100178D5D /* buttonView.swift */; };
 		84589DC22A88287300178D5D /* SettingsButtonFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589DC12A88287300178D5D /* SettingsButtonFlag.swift */; };
@@ -61,8 +61,8 @@
 		4CE098092A82DC5A000D17F6 /* FinalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreen.swift; sourceTree = "<group>"; };
 		6D8C5EE72A83865200DB7DB6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		6D8C5F0F2A864C3400DB7DB6 /* CategoryFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFlag.swift; sourceTree = "<group>"; };
-		841CB4D22A88D8E200CD2363 /* firstBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = firstBackgroundMusic.mp3; path = ../../../../Downloads/firstBackgroundMusic.mp3; sourceTree = "<group>"; };
-		841CB4D42A88D8EA00CD2363 /* secondBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = secondBackgroundMusic.mp3; path = ../../../../Downloads/secondBackgroundMusic.mp3; sourceTree = "<group>"; };
+		841CB4D62A88D96C00CD2363 /* secondBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = secondBackgroundMusic.mp3; sourceTree = "<group>"; };
+		841CB4D72A88D96C00CD2363 /* firstBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firstBackgroundMusic.mp3; sourceTree = "<group>"; };
 		84589DBC2A880C5E00178D5D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84589DBF2A880DC100178D5D /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonView.swift; sourceTree = "<group>"; };
 		84589DC12A88287300178D5D /* SettingsButtonFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonFlag.swift; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 		4C8EBAC92A877B3B00F8D6E4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				841CB4D22A88D8E200CD2363 /* firstBackgroundMusic.mp3 */,
-				841CB4D42A88D8EA00CD2363 /* secondBackgroundMusic.mp3 */,
+				841CB4D72A88D96C00CD2363 /* firstBackgroundMusic.mp3 */,
+				841CB4D62A88D96C00CD2363 /* secondBackgroundMusic.mp3 */,
 				4C8EBACA2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 */,
 				4C8EBACB2A877B3B00F8D6E4 /* explosionSound.mp3 */,
 			);
@@ -275,10 +275,10 @@
 				3743FA192A8019DC004688D7 /* LaunchScreen.storyboard in Resources */,
 				3743FA162A8019DC004688D7 /* Assets.xcassets in Resources */,
 				4C8EBACD2A877B3B00F8D6E4 /* explosionSound.mp3 in Resources */,
-				841CB4D52A88D8EA00CD2363 /* secondBackgroundMusic.mp3 in Resources */,
+				841CB4D82A88D96C00CD2363 /* secondBackgroundMusic.mp3 in Resources */,
 				4C8EBACC2A877B3B00F8D6E4 /* tikane-taymera-bombyi.mp3 in Resources */,
 				3743FA292A802606004688D7 /* DelaGothicOne-Regular.ttf in Resources */,
-				841CB4D32A88D8E200CD2363 /* firstBackgroundMusic.mp3 in Resources */,
+				841CB4D92A88D96C00CD2363 /* firstBackgroundMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
