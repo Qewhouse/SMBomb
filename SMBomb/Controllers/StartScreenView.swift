@@ -11,6 +11,9 @@ import AVFoundation
 
 class StartScreenviewController: UIViewController {
     var audioPlayer: AVAudioPlayer?
+    //MARK: - UserDefaults
+    let userDefaults = UserDefaults.standard
+    
     //MARK: - UI Elements
     lazy var firstLabel: UILabel = {
         let label = UILabel()
@@ -79,8 +82,6 @@ class StartScreenviewController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadAudioFile("firstBackgroundMusic")
         prepareAudioPlayer()
         setupView()
         makeConstraint()
@@ -88,6 +89,12 @@ class StartScreenviewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserDefaults.standard.object(forKey: "BackgroundMusic") != nil {
+            loadAudioFile(UserDefaults.standard.string(forKey: "BackgroundMusic")!)
+        } else {
+            loadAudioFile("firstBackgroundMusic")
+            userDefaults.set("firstBackgroundMusic", forKey: "BackgroundMusic")
+        }
         playAudio()
     }
     
